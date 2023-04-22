@@ -16,6 +16,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 
 import { toast } from "react-toastify"
+import Button from "../Button"
 
 function CartPage() {
 
@@ -197,9 +198,7 @@ function CartPage() {
                                                 {
                                                     payment === "pay_now" ? (
                                                         <div><Usefluter /></div>
-                                                    ): <div className="cartBtn">
-                                                        <button onClick={() => placeOrder()}>Place order</button>
-                                                    </div>
+                                                    ): <Button fn={placeOrder} text='Place Order!' styles='cartBtn' />
                                                 }
                                             </div>
                                             <div className="txt_sm">Upon clicking 'Place Order', I confirm I have read and acknowledged all terms and policies.</div>
