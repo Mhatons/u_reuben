@@ -214,7 +214,7 @@ function Item() {
                                 <option value="">large</option>
                             </select>
                         </div> */}
-                        <div className="product_quantity">
+                        <div className="usr_product_quantity">
                             <div>Quantity</div>
                             <div className="product_quantity_add">
                                 <span onClick={() => minusNum()}>-</span>
