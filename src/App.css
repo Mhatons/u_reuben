@@ -1268,6 +1268,9 @@
   .myprofile_img img{
     height: 200px;
   }
+  .product_discount{
+    display: none;
+  }
 }
 
 
