@@ -78,9 +78,9 @@ function Home_banner() {
                                                     </div>
                                                 </section>
                                                 <section className="homeProduct_txt">
-                                                    <h3 className="homeProduct_desc">{data.title}</h3>
-                                                    <h2>N{data.price}</h2>
-                                                    <p className="homeProduct_desc">{data.description}</p>
+                                                    <h2 className="homeProduct_title">{data.title}</h2>
+                                                    <p>Order our exceptionally tasty & nutritious <span className="text-warning fst-italic">{data.title}</span> for as low as <span className=" fw-bolder text-danger">N{data.price}</span> instead of <span className="text-muted fst-italic text-decoration-line-through">N{Math.round(data.price * 1.3)}</span> when you shop with us online</p>
+                                                    <div className="homeProduct_desc">{data.description}</div>
                                                     <div className="homeProduct_btn">
                                                         <div><Link onClick={() => toTopPage()} to="/products" ><button>See More</button></Link></div>
                                                     </div>

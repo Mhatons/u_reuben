@@ -2,6 +2,7 @@ import { IoCartOutline, IoList, IoGrid, IoHeartSharp, IoAddCircleSharp, IoRemove
 import { useContext, useState } from "react"
 import { myContext } from "../../myContext"
 import { Link, useNavigate } from "react-router-dom"
+import Button from "../Button"
 
 function Nav() {
 
@@ -9,7 +10,7 @@ function Nav() {
     const navigate = useNavigate()
 
     return (
-        <div className={darkbg ? "darkNav": null}>
+        <div className={darkbg ? "darkNav" : null}>
             <div className="mode_changer">
                 {
                     !darkbg && <div className="darkmode" onClick={() => setDarkbg(true)}> {nightMode}
@@ -64,15 +65,6 @@ function Nav() {
                     </div>
                 }
 
-
-
-                {
-                    toAdmin &&
-                    <div className="order_btn">
-                        <Link to="/admin" ><button className="btn btn-danger">Data Page</button></Link>
-                    </div>
-                }
-
                 <div>
                     <div>
                         <div style={{ fontSize: "18px", color: "gray" }} data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
@@ -80,7 +72,7 @@ function Nav() {
                         </div>
                     </div>
 
-                    <div class={!darkbg ? "offcanvas offcanvas-start": "offcanvas offcanvas-start darkMode"} tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class={!darkbg ? "offcanvas offcanvas-start" : "offcanvas offcanvas-start darkMode"} tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                         <div class="offcanvas-header">
                             {
                                 login && <div className="nav-item dropdown">
@@ -98,7 +90,7 @@ function Nav() {
                                     <Link to="/signin" className={!darkbg ? "nav2_links" : "nav2_links nav2_links_light text-light"}>Sign in</Link>
                                 </div>
                             }
-                            <button type="button" style={{backgroundColor: "white"}} class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            <button type="button" style={{ backgroundColor: "white" }} class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
 
@@ -109,17 +101,19 @@ function Nav() {
                             </section>
 
                             <div>
-                                <b>Categories</b>
+                                <b>Menu</b>
                                 {
                                     reverseCategories.map((data, i) => {
                                         return (
-                                            <Link className={!darkbg ? "categoty_li dropdown-item": "categoty_li dropdown-item text-light"}>{i + 1} <span className="ps-5 pe-5">{data.name}</span></Link>
+                                            <Link className={!darkbg ? "categoty_li dropdown-item" : "categoty_li dropdown-item text-light"}>{i + 1} <span className="ps-5 pe-5">{data.name}</span></Link>
                                         )
                                     })
                                 }
-                                <div className="order_btn mt-3">
-                                    <Link to="/products" ><button className="btn btn-warning">Order Now</button></Link>
-                                </div>
+                                <Link to="/products"><Button text="Order now" styles="cartBtn" /></Link>
+
+                                {
+                                    toAdmin && <Link to="/admin"><Button text="Data Page" styles="cartBtn dataBtn" /></Link>
+                                }
 
                                 Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
                             </div>
