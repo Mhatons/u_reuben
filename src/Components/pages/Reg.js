@@ -103,7 +103,7 @@ function Reg() {
             <div className="modal_bg2">
 
                 <div className="modal_bg">
-                    <div className={!darkbg ? "my_modal" : "my_modal my_modal_dark"}>
+                    <div className={!darkbg ? "my_modal modal_dark_txt" : "my_modal my_modal_dark"}>
                         <div className="my_modal_details">
                             <h4>Register</h4>
 
@@ -115,22 +115,22 @@ function Reg() {
                             <div className="pt-3">
                                 <form className="form_input reg_form">
                                     <div>Full name</div>
-                                    <input type="text" name="user_name" className={err && user.user_name === "" ? "err" : null} placeholder={updateModal ? userID.user_name : null} value={user.user_name} onChange={(e) => setUser({ ...user, user_name: e.target.value })} />
+                                    <input type="text" name="user_name" className={err && user.user_name === "" ? "err" : null} placeholder={updateModal ? userID.user_name : "Full name(s)"} value={user.user_name} onChange={(e) => setUser({ ...user, user_name: e.target.value })} />
 
                                     <div>Email</div>
-                                    <input type="email" name="email" className={err && user.email === "" ? "err" : null} placeholder={updateModal ? userID.email : null} value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
+                                    <input type="email" name="email" className={err && user.email === "" ? "err" : null} placeholder={updateModal ? userID.email : "Email"} value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
 
                                     <div>
                                         <div>Mobile number</div>
-                                        <input type="number" name="phone" className={err && user.phone === "" ? "err" : null} placeholder={updateModal ? userID.phone : null} value={user.phone} onChange={(e) => setUser({ ...user, phone: e.target.value })} />
+                                        <input type="number" name="phone" className={err && user.phone === "" ? "err" : null} placeholder={updateModal ? userID.phone : "Mobile no"} value={user.phone} onChange={(e) => setUser({ ...user, phone: e.target.value })} />
                                     </div>
                                     <div>
                                         <div>Password</div>
-                                        <input type="password" minLength="6" name="password" className={err && user.password === "" ? "err" : null} value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                                        <input type="password" minLength="6" name="password" placeholder="Password" className={err && user.password === "" ? "err" : null} value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
                                     </div>
 
                                     <div>Addess</div>
-                                    <input type="text" name="address" className={err && user.address === "" ? "err" : null} placeholder={updateModal ? userID.address : null} value={user.address} onChange={(e) => setUser({ ...user, address: e.target.value })} />
+                                    <input type="text" name="address" className={err && user.address === "" ? "err" : null} placeholder={updateModal ? userID.address : "Address"} value={user.address} onChange={(e) => setUser({ ...user, address: e.target.value })} />
 
                                     <div className="reg_select">
                                         <div>Gender</div>
