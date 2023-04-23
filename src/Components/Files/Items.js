@@ -58,7 +58,7 @@ function Items() {
                                             !grid && <div className={!darkbg ? "item_details" : "item_details items_dark"}>
                                                 <div className="item_title">{data.title}</div>
                                                 <div className="item_price">
-                                                    <b className="item_amount">NGN {data.price}</b> <br></br> <span className="item_previous_price"> NGN {data.price * 1.3}</span>
+                                                    <b className="item_amount">NGN {data.price}</b> <br></br> <span className="item_previous_price"> NGN {Math.round(data.price * 1.3)}</span>
                                                     {
                                                         !grid && <div className="items_desc">{data.description}</div>
                                                     }
@@ -69,7 +69,7 @@ function Items() {
                                             grid && <div className={!darkbg ? "items_grid_details" : "items_grid_dark"}>
                                                 <div className="item_title">{(data.title).substr(0, 12)}</div>
                                                 <div className="item_price">
-                                                    <b className="item_amount">NGN {data.price}</b> <br></br> <span className="item_previous_price"> NGN {Math.round(data.price * 1.3)}</span>
+                                                    <b className="item_amount">N {data.price}</b> <span className="item_previous_price"> N {Math.round(data.price * 1.3)}</span>
                                                 </div>
                                             </div>
                                         }

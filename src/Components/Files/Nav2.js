@@ -83,6 +83,7 @@ function Nav2() {
                                 }
                             </ul>
                         </div>
+                        
                         <div className="order_btn collapse navbar-collapse" id="navbarSupportedContent">
                             <Link to="/products" ><button className="btn btn-warning">Order Now</button></Link>
                         </div>

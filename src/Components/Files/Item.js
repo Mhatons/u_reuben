@@ -7,6 +7,7 @@ import img5 from "../images/chips22.jpg"
 import img6 from "../images/Chicken-Shawarma-Recipe-S5.jpg"
 import { useContext, useEffect } from "react"
 import { myContext } from "../../myContext"
+import Button from "../Button"
 
 import { IoLocation, IoCheckmarkCircleSharp } from "react-icons/io5"
 import { useState } from "react"

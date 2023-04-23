@@ -8,33 +8,14 @@ function HomeSilder() {
     return (
         <div>
             <div className="home_slider">
-                {/* <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
-                    <div className="menu_ul">
-                        <div> <Link className="menu_list">Super deals</Link> </div>
-                        <div> <Link className="menu_list">Soft refreshments</Link> </div>
-                        <div> <Link className="menu_list">Yummy delicacies</Link> </div>
-                        <div> <Link className="menu_list">Order Now</Link> </div>
-                    </div>
-                    <div className="carousel-inner">
-                        <div className="carousel-item active img_header">
-                            <img src={slide1} alt="..." />
-                        </div>
-                        <div className="carousel-item img_header">
-                            <img src={slide2} alt="..." />
-                        </div>
-                        <div className="carousel-item img_header">
-                            <img src={slide3} alt="..." />
-                        </div>
-                    </div>
-                </div> */}
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                    <div className="menu_ul">
+                    {/* <div className="menu_ul">
                         <div> <Link className="menu_list">Super deals</Link> </div>
                         <div> <Link className="menu_list">Soft refreshments</Link> </div>
                         <div> <Link className="menu_list">Yummy delicacies</Link> </div>
                         <div> <Link className="menu_list">Order Now</Link> </div>
-                    </div>
+                    </div> */}
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
