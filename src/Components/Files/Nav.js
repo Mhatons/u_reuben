@@ -13,7 +13,7 @@ function Nav() {
         <div className={darkbg ? "darkNav" : null}>
             <div className="mode_changer">
                 {
-                    !darkbg && <div className="darkmode" onClick={() => setDarkbg(true)}> {nightMode}
+                    !darkbg && <div className="nightmode" onClick={() => setDarkbg(true)}> {nightMode}
                     </div>
                 }
                 {

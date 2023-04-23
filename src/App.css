@@ -1271,6 +1271,9 @@
   .product_discount{
     display: none;
   }
+  .mode_changer{
+    font-size: 1.6em;
+  }
 }
 
 
@@ -1463,6 +1466,9 @@
   }
   .banner_video{
     height: 110px; border-radius: 4px;
+  }
+  .nav_sm{
+    padding-right: 10px;
   }
 }
 @media(max-width: 450px){
