@@ -971,12 +971,15 @@
   margin: auto; display: flex; background-color: #00000092; width: 100%; height: 42.1em;
 }
 .my_modal{
-  border-radius: 5px; background-color: #0f12bd82; width: 45%; margin: auto; text-align: center; color: white;
+  border-radius: 5px; background-color: #ededf2; width: 45%; margin: auto; text-align: center; color: white;
   height: 650px; overflow: scroll; position: fixed; left: 0; right: 0; margin-top: 1em;
 }
 .sign_modal{
-  border-radius: 5px; background-color: #0f12bd82; width: 45%; margin: auto; text-align: center; color: white;
+  border-radius: 5px; background-color: #ededf2; width: 45%; margin: auto; text-align: center; color: white;
   height: 410px;  margin-top: 8%;
+}
+.modal_dark_txt{
+  color: #424242;
 }
 .my_modal::-webkit-scrollbar{
   display: none;
@@ -994,16 +997,16 @@
   width: 20%;
 }
 .form_input{
-  text-align: left;
+  text-align: left
 }
 .form_input input{
   width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 1em 0em; margin-bottom: 0.7em; font-family: cursive;
-  color: white; font-size: 20px; text-align: center;
+  color: white; font-size: 20px; text-align: center; color: #424242;
   /* #EBECFE */
 }
 .reg_form input{
   width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 0.6em; margin-bottom: 0.7em; font-family: cursive;
-  color: white;  font-size: 15px; text-align: left;
+  color: white;  font-size: 15px; text-align: left;  color: #424242;
 }
 .reg_select select{
   width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 0.6em !important; margin-bottom: 0.7em; font-family: cursive;
@@ -1011,9 +1014,12 @@
 }
 .form_input select{
   width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 1em 0em; margin-bottom: 0.7em; font-family: cursive;
-  color: white; font-size: 20px; text-align: center;
+  color: white; font-size: 20px; text-align: center; color: #424242;
 }
 .my_modal_dark input{
+  background-color: #424242dc; color: white; border: 1px solid #585757;
+}
+.my_modal_dark select{
   background-color: #424242dc; color: white; border: 1px solid #585757;
 }
 .form_input input:focus{
@@ -1033,10 +1039,10 @@
   width: 100%; border: none; outline: none; background-color: #ffa600; padding: 0.5em 0em; border-radius: 4px;
 }
 .form_switch{
-  font-size: 13px; padding-top: 2em; color: #c3c0c0;
+  font-size: 13px; padding-top: 2em; color: #8e8e8e;
 }
 .form_navigate{
-  color: #EBECFE; font-weight: 500; text-decoration: none;
+  color: #8e8e8e; font-weight: 500; text-decoration: none; padding-left: 5px;
 }
 .form_navigate:hover{
   color: #ffa600;
