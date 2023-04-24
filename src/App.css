@@ -1487,18 +1487,19 @@
   .items_grid{
     gap: 1.5em;
   }
+  .items_grid img{
+    height: 130px;
+  }
+  .items_header{
+   font-size: 14px;
+  }
+  .item_grid1, .item_grid2{
+   font-size: 14px;
+  }
 }
 
 @media(max-width: 350px){
-  .items_grid img{
-   height: 130px;
- }
- .items_header{
-  font-size: 12px;
- }
- .item_grid1, .item_grid2{
-  font-size: 12px;
- }
+
  .sub_header{
   font-size: 10px;
  }
