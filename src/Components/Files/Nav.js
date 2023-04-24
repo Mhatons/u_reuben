@@ -10,7 +10,7 @@ function Nav() {
     const navigate = useNavigate()
 
     return (
-        <div className={darkbg ? "darkNav" : null}>
+        <div className={darkbg ? "darkNav sm_nav_container" : 'sm_nav_container'}>
             <div className="mode_changer">
                 {
                     !darkbg && <div className="nightmode" onClick={() => setDarkbg(true)}> {nightMode}
