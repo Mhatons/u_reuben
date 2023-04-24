@@ -85,18 +85,17 @@ function Items() {
                         <div className="show_more_events">
                             {
                                 more && <div className="">
-                                    <div onClick={() => toTopPage()} className="more_events"> <IoChevronUpSharp /> </div>
+                                    
                                     {
                                         !grid && <span onClick={() => setGrid(true)} className="item_grid1 more_events"><IoGrid />
-                                            {/* <p className="item_grid1_txt">Grid view</p> */}
                                         </span>
 
                                     }
                                     {
                                         grid && <span onClick={() => setGrid(false)} className="item_grid2 more_events"><TfiLayoutAccordionSeparated />
-                                            {/* <p className="item_grid2_txt">Single view</p> */}
                                         </span>
                                     }
+                                    {/* <div onClick={() => toTopPage()} className="more_events"> <IoChevronUpSharp /> </div> */}
                                 </div>
                             }
                         </div>
