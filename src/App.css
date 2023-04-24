@@ -1090,7 +1090,10 @@
 .verify_modal{
   border-radius: 5px; background-color: #ffffff; width: 45%; margin: auto; text-align: center; color: black;
 }
-
+.verify_modal_container{
+  position: fixed; width: 100%; top: 0; right: 0; bottom: 0; left: 0; display: flex; z-index: 3; background-size: cover;
+   background-color: #000000b6;
+}
 
 
 
@@ -1216,6 +1219,12 @@
   }
   .summary_logo{
     font-size: 12px;
+  }
+  .verify_input{
+    width: 100%;
+  }
+  .verify_modal{
+    width: 80%;
   }
 }
 @media(max-width: 992px){

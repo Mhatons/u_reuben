@@ -15,7 +15,7 @@ function Reg() {
 
     const [verify, setVerify] = useState("")
     const [cur_ver, setCur_Ver] = useState("")
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(true)
 
     const [user, setUser] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
     const [userID, setUserID] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
@@ -164,12 +164,12 @@ function Reg() {
             </div>
 
             {
-                showModal && <div className="admin_modal">
+                showModal && <div className="verify_modal_container">
                     <div className={!darkbg ? "verify_modal" : "verify_modal admin_mode_dark"}>
                         <div onClick={() => setShowModal(false)} className="modal_close"><IoCloseSharp /></div>
                         <div className="my_modal_details">
                             <div className="pt-3">
-                                <div>To gain full access, please check your email and enter verification code sent to you</div>
+                                <div>Please enter email verification</div>
 
                                 <div className="form_input verify_input">
                                     <input type="number" className={err && verify === "" ? "err" : null} value={verify} onChange={(e) => setVerify(e.target.value)} />
