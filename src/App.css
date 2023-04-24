@@ -1487,18 +1487,29 @@
   .items_grid{
     gap: 1.5em;
   }
+  .items_grid img{
+    height: 130px;
+  }
+  .items_header{
+   font-size: 14px;
+  }
+  .item_grid1, .item_grid2{
+   font-size: 14px;
+  }
+
+  .item_title{
+    font-size: 0.7em;
+  }
+  .item_price{
+    font-size: 0.7em; white-space: nowrap; display: flex; overflow: hidden;
+  }
+  .item_previous_price{
+    padding-left: 0.3em;
+  }
 }
 
 @media(max-width: 350px){
-  .items_grid img{
-   height: 130px;
- }
- .items_header{
-  font-size: 12px;
- }
- .item_grid1, .item_grid2{
-  font-size: 12px;
- }
+
  .sub_header{
   font-size: 10px;
  }
@@ -1526,15 +1537,7 @@
   .items_grid{
     gap: 0.8em;
   }
-  .item_title{
-    font-size: 0.7em;
-  }
-  .item_price{
-    font-size: 0.7em; white-space: nowrap; display: flex; overflow: hidden;
-  }
-  .item_previous_price{
-    padding-left: 0.3em;
-  }
+
   .google_apple{
     flex-direction: column; gap: 1em;
   }
