@@ -1541,6 +1541,12 @@
   .google_apple{
     flex-direction: column; gap: 1em;
   }
+  .items_body{
+    width: 90%;
+  }
+  .item_image img{
+    border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
+  }
 }
 
 @media(max-width: 300px){
