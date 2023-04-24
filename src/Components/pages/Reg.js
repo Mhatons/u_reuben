@@ -15,7 +15,7 @@ function Reg() {
 
     const [verify, setVerify] = useState("")
     const [cur_ver, setCur_Ver] = useState("")
-    const [showModal, setShowModal] = useState(true)
+    const [showModal, setShowModal] = useState(false)
 
     const [user, setUser] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
     const [userID, setUserID] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
