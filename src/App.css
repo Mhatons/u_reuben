@@ -20,8 +20,11 @@
 .nav{
   width: 85%; margin: auto; font-size: 14px; display: flex; align-items: center; justify-content: space-between;
 }
+.sm_nav_container{
+  position: fixed; width: 100%; background-color: white; z-index: 2;
+}
 .nav_sm{
-  width: 80%; margin: auto; font-size: 14px; display: flex; align-items: center; justify-content: space-between;
+  width: 90%; margin: auto; font-size: 14px; display: flex; align-items: center; justify-content: space-between; padding-right: 2em;
 }
 .nav_header{
   background-color: #030777; z-index: 99; position: sticky; visibility: hidden;
@@ -1466,9 +1469,6 @@
   }
   .banner_video{
     height: 110px; border-radius: 4px;
-  }
-  .nav_sm{
-    padding-right: 10px;
   }
 }
 @media(max-width: 450px){
