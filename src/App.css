@@ -660,6 +660,9 @@
 .product_img{
   position: sticky; top: 8.5em;
 }
+.sm_product_price{
+  display: none;
+}
 .current_product_image{
   overflow: hidden;
 }
@@ -1368,6 +1371,9 @@
   .mode_changer{
     margin-top: 0.1em; margin-right: -0.001em
   }
+  .product{
+    width: 100%;
+  }
   .product_details{
     display: block;
   }
@@ -1380,6 +1386,9 @@
   .product_btn{
     justify-content: space-between; width: 80%; margin: auto;
   }
+  /* .current_product_image img{
+    position: fixed;
+  } */
   .flip_boxes{
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1406,6 +1415,9 @@
   }
   .bridgeImages{
     height: 70px;
+  }
+  .sm_product_price{
+    display: block;
   }
  
   
@@ -1514,6 +1526,9 @@
   }
   .items_grid_details{
     border-top-left-radius: 10px; border-top-right-radius: 10px; box-shadow: 0px 0px 0px 0px;
+  }
+  .items_grid_dark{
+    background-color: transparent;
   }
 }
 

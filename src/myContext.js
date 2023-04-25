@@ -8,6 +8,8 @@ import { toast } from "react-toastify"
 
 export const myContext = createContext()
 
+const discountRate = parseInt(5)
+
 function PostProvider({ children }) {
     const myModal = {
         color: "green"
@@ -221,6 +223,12 @@ function PostProvider({ children }) {
         window.scrollTo(0, 0)
     }
 
+    function discount(e){
+        const rate = parseFloat(e * discountRate / 100)
+        const discountPercent = e - rate
+        return discountPercent
+    }
+
 
     const [login, setLogin] = useState(false)
     const [adminlogin, setAdminLogin] = useState(false)
@@ -340,6 +348,8 @@ function PostProvider({ children }) {
         setMore,
         showMore,
         setShowMore,
+        discount,
+        discountRate,
 
         userInfo,
         setUserInfo,

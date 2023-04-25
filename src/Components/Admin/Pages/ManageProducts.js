@@ -11,8 +11,8 @@ import { toast } from "react-toastify"
 
 function ManageProducts() {
 
-    const { grid, setGrid, darkbg, modal, setModal, updateModal, setUpdateModal, spinner, reverseProduct, url, err, setErr, reverseCategories, deleteProduct, dateToday, userInfo
-    
+    const { grid, setGrid, darkbg, modal, setModal, updateModal, setUpdateModal,
+        spinner, reverseProduct, url, err, setErr, reverseCategories, deleteProduct, dateToday, userInfo 
     } = useContext(myContext)
 
     const [product, setProduct] = useState({ title: "", product_category_id: "", image: "", description: "", date: "", user_id: "", price: "" })
