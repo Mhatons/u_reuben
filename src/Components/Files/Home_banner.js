@@ -9,7 +9,7 @@ import { myContext } from "../../myContext"
 
 function Home_banner() {
 
-    const { darkbg, spinner, url, reverseProduct, toTopPage } = useContext(myContext)
+    const { darkbg, spinner, url, reverseProduct, toTopPage, discount } = useContext(myContext)
     const [bridge, setBridge] = useState(false)
 
     const sliceProduct = [...reverseProduct].slice(0,10)
@@ -79,7 +79,7 @@ function Home_banner() {
                                                 </section>
                                                 <section className="homeProduct_txt">
                                                     <h2 className="homeProduct_title">{data.title}</h2>
-                                                    <p>Order our exceptionally tasty & nutritious <span className="text-warning fst-italic">{data.title}</span> for as low as <span className=" fw-bolder text-danger">N{data.price}</span> instead of <span className="text-muted fst-italic text-decoration-line-through">N{Math.round(data.price * 1.3)}</span> when you shop with us online</p>
+                                                    <p>Order our exceptionally tasty & nutritious <span className="text-warning fst-italic">{data.title}</span> for as low as <span className=" fw-bolder text-danger">N{discount(data.price)}</span> instead of <span className="text-muted fst-italic text-decoration-line-through">N{data.price}</span> when you shop with us online</p>
                                                     <div className="homeProduct_desc">{data.description}</div>
                                                     <div className="homeProduct_btn">
                                                         <div><Link onClick={() => toTopPage()} to="/products" ><button>See More</button></Link></div>

@@ -5,7 +5,7 @@ import { myContext } from "../../myContext"
 import { Link, useNavigate } from "react-router-dom"
 function Items() {
 
-    const { grid, setGrid, darkbg, reverseProduct, url, spinner, toTopPage, more, setMore } = useContext(myContext)
+    const { grid, setGrid, darkbg, reverseProduct, url, spinner, toTopPage, more, setMore, discount, discountRate } = useContext(myContext)
     const navigate = useNavigate()
     const [showMore, setShowMore] = useState(false)
 
@@ -15,7 +15,7 @@ function Items() {
         if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350) {
             setShowMore(true)
         }
-        else{
+        else {
             setShowMore(false)
             setMore(false)
         }
@@ -57,19 +57,21 @@ function Items() {
                                         {
                                             !grid && <div className={!darkbg ? "item_details" : "item_details items_dark"}>
                                                 <div className="item_title">{data.title}</div>
+                                                <span className=" text-muted fst-italic bg-light ps-1 pe-1" style={{ float: "right", fontSize: "13px" }}>-{parseInt(discountRate)}%</span>
                                                 <div className="item_price">
-                                                    <b className="item_amount">NGN {data.price}</b> <br></br> <span className="item_previous_price"> NGN {Math.round(data.price * 1.3)}</span>
-                                                    {
-                                                        !grid && <div className="items_desc">{data.description}</div>
-                                                    }
+                                                    <b className="item_amount text-danger pe-1">N{discount(data.price)}</b> <br></br> <span className="item_previous_price"> N{data.price}</span>
                                                 </div>
+                                                {/* {
+                                                    !grid && <div className="items_desc">{data.description}</div>
+                                                } */}
                                             </div>
                                         }
                                         {
                                             grid && <div className={!darkbg ? "items_grid_details" : "items_grid_dark"}>
                                                 <div className="item_title">{(data.title).substr(0, 12)}</div>
+                                                <span className=" text-muted fst-italic bg-light ps-1 pe-1" style={{ float: "right", fontSize: "13px" }}>-{parseInt(discountRate)}%</span>
                                                 <div className="item_price">
-                                                    <b className="item_amount">N {data.price}</b> <span className="item_previous_price"> N {Math.round(data.price * 1.3)}</span>
+                                                    <b className="item_amount text-danger pe-1">N{discount(data.price)}</b> <span className="item_previous_price"> N{data.price}</span>
                                                 </div>
                                             </div>
                                         }
@@ -85,7 +87,7 @@ function Items() {
                         <div className="show_more_events">
                             {
                                 more && <div className="">
-                                    
+
                                     {
                                         !grid && <span onClick={() => setGrid(true)} className="item_grid1 more_events"><IoGrid />
                                         </span>

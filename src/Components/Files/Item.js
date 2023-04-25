@@ -15,7 +15,7 @@ import { toast } from "react-toastify"
 
 function Item() {
 
-    const { darkbg, url, reverseProduct, reverseBranch, err, userInfo, cart, login, dateToday, setErr, orders } = useContext(myContext)
+    const { darkbg, url, reverseProduct, reverseBranch, err, userInfo, cart, login, dateToday, setErr, orders, discount, discountRate } = useContext(myContext)
     const { id } = useParams()
     const [product, setProduct] = useState([])
     const rand = [...reverseProduct].slice(0, 5)
@@ -37,17 +37,17 @@ function Item() {
         return fee
     }
 
-    function handleReload(){
+    function handleReload() {
         // window.location.reload()
     }
 
 
-    function getID(e){
+    function getID(e) {
         fetch(`${url}/products/${e}`)
-        .then((resp) => resp.json())
-        .then((data) => {
-            setProduct(data)
-        })
+            .then((resp) => resp.json())
+            .then((data) => {
+                setProduct(data)
+            })
     }
 
     useEffect(() => {
@@ -187,12 +187,15 @@ function Item() {
                         <div className="product_img">
                             <div className="current_product_image">
                                 <img src={`${url}/uploads/${product.image}`} alt="" />
+                                <div className=" sm_product_price text-center fs-3 fw-bolder pb-3">
+                                    NGN {discount(product.price)}
+                                </div>
                             </div>
                             <div className="product_xImgs">
                                 {
                                     gallery.map((data, i) => {
                                         return (
-                                            <Link  className="product_xImgs_img" onClick={() => getID(data._id)}>
+                                            <Link className="product_xImgs_img" onClick={() => getID(data._id)}>
                                                 <img src={`${url}/uploads/${data.image}`} key={i} alt="" />
                                             </Link>
                                         )
@@ -203,7 +206,7 @@ function Item() {
                     </div>
                     <div className={!darkbg ? "product_attr" : "product_attr product_attr2 darkNav"}>
                         <div className="product_price">
-                            Get the <span style={{ color: "gold", fontWeight: "700" }}>{product.title}</span> for as low as <span style={{ color: "white", fontWeight: "700" }}>NGN {product.price}</span> instead of <span style={{ textDecoration: "line-through" }}>NGN {product.price * 1.3}</span>
+                            Get the <span style={{ color: "gold", fontWeight: "700" }}>{product.title}</span> for as low as <span className="text-danger fst-italic">NGN {discount(product.price)}</span> instead of <span className="text-decoration-line-through fst-italic">NGN {product.price}</span> <span className="text-warning"> Enjoy - {discountRate}% discount</span>
                         </div>
                         {/* <div className="product_size">
                             <div>Size</div>
