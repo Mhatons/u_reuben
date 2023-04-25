@@ -450,7 +450,7 @@
   margin-top: 2em;
 }
 .item_image{
- position: relative;  border-radius: 10px;
+ position: relative; background-color: transparent; overflow: hidden;  border-top-left-radius: 10px; border-top-right-radius: 10px;
 }
 .item_image_overflow{
   overflow: hidden;
@@ -466,7 +466,7 @@
   transition-duration: 1.3s;
 }
 .item:hover .item_image img{
-  scale: 1.2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
+  scale: 1.2;
 }
 .item:hover .buyItem_btn_bg{
   display: flex;
