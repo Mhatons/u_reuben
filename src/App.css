@@ -1372,7 +1372,7 @@
     margin-top: 0.1em; margin-right: -0.001em
   }
   .product{
-    width: 100%;
+    width: 100%; padding: 0px;
   }
   .product_details{
     display: block;
@@ -1386,9 +1386,6 @@
   .product_btn{
     justify-content: space-between; width: 80%; margin: auto;
   }
-  /* .current_product_image img{
-    position: fixed;
-  } */
   .flip_boxes{
     grid-template-columns: repeat(3, 1fr);
   }
