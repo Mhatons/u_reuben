@@ -100,6 +100,7 @@ function Reg() {
     return (
         <div>
             <Nav2 />
+            <Nav />
             <div className="modal_bg2">
 
                 <div className="modal_bg">

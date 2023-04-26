@@ -10,7 +10,7 @@ import SideBar from "../Files/SideBar"
 
 function Expense() {
 
-    const { darkbg, modal, setModal, updateModal, setUpdateModal, reverseExpenses, url, setErr, err, reverseBranch, deleteExpense, userInfo, num, dateToday } = useContext(myContext)
+    const { darkbg, modal, setModal, updateModal, setUpdateModal, reverseExpenses, url, setErr, err, reverseBranch, deleteExpense, userInfo, num, dateToday, spinner } = useContext(myContext)
 
     const [expenses, setExpenses] = useState({ amount: "", purpose: "", user_id: "", branch_id: "" })
     const [findExpenseID, setFindExpenseID] = useState({ amount: "", purpose: "", branch_id: "" })
@@ -189,7 +189,7 @@ function Expense() {
                                                                 </tr>
                                                             )
                                                         })
-                                                    ) : null
+                                                    ) :  <img src={spinner} alt="spinner" className="spinner" />
                                                 }
                                             </tbody>
                                         </table>

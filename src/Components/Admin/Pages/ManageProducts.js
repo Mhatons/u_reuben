@@ -211,7 +211,7 @@ function ManageProducts() {
                                                         </div>
                                                     )
                                                 })
-                                            ) : <img src={spinner} alt="loading..." id="spinner" />
+                                            ) :  <img src={spinner} alt="spinner" className="spinner" />
                                         }
 
                                     </div>
