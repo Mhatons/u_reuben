@@ -2,9 +2,8 @@ import { useEffect } from "react"
 import { createContext } from "react"
 import { useState } from "react"
 import logo from "./Components/images/Logo UncleReuben.png"
-import spinner from "./Components/images/spinner.gif"
+import spinner from "./Components/images/loader.gif"
 import { HiMoon, HiSun } from "react-icons/hi2"
-import { toast } from "react-toastify"
 
 export const myContext = createContext()
 

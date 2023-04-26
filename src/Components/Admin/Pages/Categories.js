@@ -9,7 +9,7 @@ import { useState } from "react"
 
 function Categories() {
 
-    const { grid, setGrid, darkbg, modal, setModal, updateModal, setUpdateModal, err, setErr, url, reverseCategories } = useContext(myContext)
+    const { grid, setGrid, darkbg, modal, setModal, updateModal, setUpdateModal, err, setErr, url, reverseCategories, spinner } = useContext(myContext)
 
     const [category, setCategory] = useState("")
     const [findCategory, setFindCategory] = useState("")
@@ -169,7 +169,7 @@ function Categories() {
                                                                 </tr>
                                                             )
                                                         })
-                                                    ) : null
+                                                    ) :  <img src={spinner} alt="spinner" className="spinner" />
                                                 }
                                             </tbody>
                                         </table>

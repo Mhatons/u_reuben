@@ -79,6 +79,7 @@ function Signin() {
     return (
         <div>
             <Nav2 />
+            <Nav />
             <div className="modal_bg1">
 
                 <div className="modal_bg">

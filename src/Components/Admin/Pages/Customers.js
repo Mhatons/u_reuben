@@ -226,7 +226,7 @@ function Customers() {
                                                         </div>
                                                     )
                                                 })
-                                            ) : <img src={spinner} alt="spinner" id="spinner" />
+                                            ) :  <img src={spinner} alt="spinner" className="spinner" />
                                         }
 
                                     </div>

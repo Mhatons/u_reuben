@@ -9,7 +9,7 @@ import { toast } from "react-toastify"
 
 
 function Sales() {
-    const { darkbg, modal, setModal, updateModal, setUpdateModal, err, setErr, url, reverseSales, reverseBranch, reverseProduct, salesTotal, reverseCategories, dateToday, userInfo } = useContext(myContext)
+    const { darkbg, modal, setModal, updateModal, setUpdateModal, err, setErr, url, reverseSales, reverseBranch, reverseProduct, salesTotal, reverseCategories, dateToday, userInfo, spinner } = useContext(myContext)
     const [sale, setSale] = useState({ payment_id: "", product_id: "", delivery_id: "", quantity: "", category_id: "" })
 
     const [getSales, setGetSales] = useState([])
@@ -400,7 +400,7 @@ function Sales() {
                                                                 </tr>
                                                             )
                                                         })
-                                                    ) : null
+                                                    ) :  <img src={spinner} alt="spinner" className="spinner" />
                                                 }
                                             </tbody>
                                         </table>

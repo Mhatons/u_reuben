@@ -1177,7 +1177,7 @@
 
 
 .spinner{
-  position: fixed; top: 9em; right: 0; left: 0; bottom: 0; width: 15%; margin: auto; z-index: 1; transform: rotateY(180deg);
+  position: fixed; top: 9em; right: 0; left: 0; bottom: 0; width: 20%; margin: auto; z-index: 1;
 }
 .show_nav{
   display: none;
@@ -1415,6 +1415,9 @@
   }
   .sm_product_price{
     display: block;
+  }
+  .spinner{
+    width: 60%;
   }
  
   

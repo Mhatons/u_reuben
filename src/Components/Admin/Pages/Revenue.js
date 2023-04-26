@@ -3,7 +3,7 @@ import { myContext } from "../../../myContext"
 import { IoArrowBackCircle } from "react-icons/io5"
 import { useNavigate, useParams } from "react-router-dom"
 function Revenue() {
-    const { darkbg, setModal, url, sale, setSale, totalSale, setBranchExpenese, branchExpenese, totalBranchExpenses } = useContext(myContext)
+    const { darkbg, setModal, url, sale, setSale, totalSale, setBranchExpenese, branchExpenese, totalBranchExpenses, spinner } = useContext(myContext)
     const [income, setIncome] = useState(true)
     const navigate = useNavigate()
     const [branch, setBranch] = useState([])
@@ -146,7 +146,7 @@ function Revenue() {
                                                         </tr>
                                                     )
                                                 })
-                                            ) : null
+                                            ) :  <img src={spinner} alt="spinner" className="spinner" />
                                         }
                                     </tbody>
                                 </table>

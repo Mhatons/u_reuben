@@ -9,7 +9,7 @@ import { useState } from "react"
 import { toast } from "react-toastify"
 function Roles() {
 
-    const { darkbg, modal, setModal, updateModal, setUpdateModal, reverseRoles, err, setErr, url } = useContext(myContext)
+    const { darkbg, modal, setModal, updateModal, setUpdateModal, reverseRoles, err, setErr, url, spinner } = useContext(myContext)
 
     const [role, setRole] = useState("")
     const [fRole, setFRole] = useState("")
@@ -172,7 +172,7 @@ function Roles() {
                                                                     </tr>
                                                                 )
                                                             })
-                                                        ) : null
+                                                        ) :  <img src={spinner} alt="spinner" className="spinner" />
                                                     }
                                                 </tbody>
                                             </table>

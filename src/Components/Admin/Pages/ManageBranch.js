@@ -9,7 +9,7 @@ import SideBar from "../Files/SideBar"
 import { toast } from "react-toastify"
 function ManageBranch() {
 
-    const { darkbg, modal, setModal, updateModal, setUpdateModal, err, setErr, url, reverseBranch, dateToday } = useContext(myContext)
+    const { darkbg, modal, setModal, updateModal, setUpdateModal, err, setErr, url, reverseBranch, dateToday, spinner } = useContext(myContext)
 
     const [branch, setBranch] = useState({ name: "", address: "" })
     const [findbranchID, setFindBranchID] = useState({ name: "", address: "" })
@@ -186,7 +186,7 @@ function ManageBranch() {
                                                                 </tr>
                                                             )
                                                         })
-                                                    ) : null
+                                                    ) :  <img src={spinner} alt="spinner" className="spinner" />
                                                 }
                                             </tbody>
                                         </table>
