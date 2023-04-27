@@ -4,6 +4,7 @@ import slide1 from "../images/pizza-5179939_1920.jpg"
 import slide4 from "../images/333163018_117208274632470_8841863388902976207_n.jpg"
 import video from "../images/video.58db49b42c46e5f85375.mp4"
 import { Link } from "react-router-dom"
+import DeliveryHeader from "./DeliverHeader"
 function HomeSilder() {
     return (
         <div>
@@ -45,9 +46,11 @@ function HomeSilder() {
                     </button>
                 </div>
 
-                <div>
+                {/* <div>
                     <iframe className="banner_video" src="https://media.istockphoto.com/id/1161244029/video/friends-raising-a-toast.mp4?s=mp4-640x640-is&k=20&c=rptAfU56xxCSDD3ZQ0OJL6uyPB2d6p4s3Gir1Qo2OUk=" width="100%" height="100%"></iframe>
-                </div>
+                </div> */}
+
+                <DeliveryHeader />
             </div>
 
         </div>
