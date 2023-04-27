@@ -115,10 +115,10 @@
 
 
 .home_banner_bg{
-  background-color: #0f0e0e;
+  background-color: #f5f5f5;
 }
 .homeBanner{
-  width: 80%; margin: auto; padding-top: 5em;
+  width: 80%; margin: auto; padding-top: 6em;
 }
 .homeBanner_products{
   width: 90%; margin: auto; padding-top: 4em;
@@ -130,10 +130,7 @@
   display: flex; justify-content: space-between;
 }
 .bg_deliver img{
-  width: 100%;
-}
-.bg_deliver img{
-  width: 100%; object-fit: contain;
+  width: 100%; object-fit: contain; margin-top: 1em; background-color: white; border-radius: 4px;
 }
 
 /* Category List */
@@ -1427,6 +1424,9 @@
   }
   .homeProduct_sect{
     padding-bottom: 4em;
+  }
+  .home_banner_bg{
+    background-color: #0f0e0e;
   }
   .homeBanner{
     width: 100%; padding-top: 4em; background-color: black;
