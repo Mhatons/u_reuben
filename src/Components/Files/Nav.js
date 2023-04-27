@@ -60,8 +60,9 @@ function Nav() {
 
                 {
                     login && <div className="cart_in_nav">
-                        <Link to="/cart" className="cart"><IoCartOutline /></Link>
+                        <Link to="/cart" className="cart"><IoCartOutline />
                         <div className="cart_no">{cart}</div>
+                        </Link>
                     </div>
                 }
 

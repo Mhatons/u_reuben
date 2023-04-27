@@ -1425,11 +1425,11 @@
   .homeProduct_sect{
     padding-bottom: 4em;
   }
-  .home_banner_bg{
+  /* .home_banner_bg{
     background-color: #0f0e0e;
-  }
+  } */
   .homeBanner{
-    width: 100%; padding-top: 4em; background-color: black;
+    width: 100%; padding-top: 4em;
   }
   .img_header img{
     height: 200px; border-radius: 0px;
