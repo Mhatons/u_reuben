@@ -121,7 +121,7 @@
   width: 80%; margin: auto; padding-top: 5em;
 }
 .homeBanner_products{
-  width: 80%; margin: auto; padding-top: 4em;
+  width: 90%; margin: auto; padding-top: 4em;
 }
 .homeBanner_products_bg{
   background-color: white;
@@ -1419,6 +1419,12 @@
   .spinner{
     width: 60%;
   }
+  .homeProduct_sect{
+    padding-bottom: 4em;
+  }
+  /* .homeBanner{
+    width: 100%;
+  } */
  
   
 }
@@ -1481,9 +1487,9 @@
   .empty_cart{
     width: 75%; font-size: 13px;
   }
-  .homeProduct_desc{
+  /* .homeProduct_desc{
     white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
-  }
+  } */
 
   .img_header img{
     height: 150px; border-radius: 4px;
