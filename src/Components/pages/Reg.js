@@ -12,7 +12,7 @@ import VerifyModal from "../Files/VerifyModal"
 import Button from "../Button"
 function Reg() {
 
-    const { darkbg, setDarkbg, updateModal, url, err, setErr, dateToday, setOtpCode, setSpinner, spin, showModal, setShowModal } = useContext(myContext)
+    const { darkbg, setDarkbg, updateModal, url, err, setErr, dateToday, setOtpCode, setBtnSpinner, spin, showModal, setShowModal } = useContext(myContext)
 
 
     const [user, setUser] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
@@ -24,7 +24,7 @@ function Reg() {
             setErr(true)
         }
         else {
-            setSpinner(true)
+            setBtnSpinner(true)
             fetch(`${url}/users`, {
                 method: "POST",
                 body: myForm
@@ -33,11 +33,11 @@ function Reg() {
                     setOtpCode(data)
                     if (data.success === false) {
                         toast.error("Email is already taken")
-                        setSpinner(false)
+                        setBtnSpinner(false)
                     }
                     else {
                         setShowModal(true)
-                        setSpinner(false)
+                        setBtnSpinner(false)
                     }
                 })
         }
