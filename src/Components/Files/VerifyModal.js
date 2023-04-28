@@ -9,7 +9,7 @@ import { useRef } from "react";
 const VerifyModal = () => {
     const [otp, setOtp] = useState(new Array(6).fill(""))
     const code = useRef("")
-    const { setShowModal, showModal, darkbg, otpCode, url, dateToday, logo } = useContext(myContext)
+    const { setShowModal, darkbg, otpCode, url, dateToday, logo } = useContext(myContext)
     const navigate = useNavigate()
 
     function handleChange(e, index) {

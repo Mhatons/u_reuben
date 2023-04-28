@@ -3,6 +3,7 @@ import { createContext } from "react"
 import { useState } from "react"
 import logo from "./Components/images/Logo UncleReuben.png"
 import spin from "./Components/images/spin.gif"
+import spinner from "./Components/images/loader.gif"
 import { HiMoon, HiSun } from "react-icons/hi2"
 
 export const myContext = createContext()
@@ -271,7 +272,7 @@ function PostProvider({ children }) {
     const [cartSum, setCartSum] = useState("")
     const [showModal, setShowModal] = useState(false)
     const [otpCode, setOtpCode] = useState("")
-    const [spinner, setSpinner] = useState(false)
+    const [btnSpinner, setBtnSpinner] = useState(false)
 
 
 
@@ -357,7 +358,8 @@ function PostProvider({ children }) {
         otpCode,
         spin,
         spinner,
-        setSpinner,
+        btnSpinner,
+        setBtnSpinner,
 
         userInfo,
         setUserInfo,
