@@ -2,20 +2,18 @@ import { Link, useNavigate } from "react-router-dom"
 import facebookLogo from "../images/Facebook-Logo-2005-2015.png"
 import googleLogo from "../images/Google-logo.png"
 
-import { IoCloseSharp, IoCartOutline, IoInvertModeSharp, IoInvertMode } from "react-icons/io5"
+
 import { useContext, useState } from "react"
 import { myContext } from "../../myContext"
 import Nav2 from "../Files/Nav2"
 import Nav from "../Files/Nav"
 import { toast } from "react-toastify"
+import VerifyModal from "../Files/VerifyModal"
+import Button from "../Button"
 function Reg() {
 
-    const { darkbg, setDarkbg, updateModal, url, err, setErr, dateToday } = useContext(myContext)
-    const navigate = useNavigate()
+    const { darkbg, setDarkbg, updateModal, url, err, setErr, dateToday, setOtpCode, setSpinner, spin, showModal, setShowModal } = useContext(myContext)
 
-    const [verify, setVerify] = useState("")
-    const [cur_ver, setCur_Ver] = useState("")
-    const [showModal, setShowModal] = useState(false)
 
     const [user, setUser] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
     const [userID, setUserID] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
@@ -26,21 +24,28 @@ function Reg() {
             setErr(true)
         }
         else {
+            setSpinner(true)
             fetch(`${url}/users`, {
                 method: "POST",
                 body: myForm
             }).then(resp => resp.json())
                 .then((data) => {
-                    setCur_Ver(data)
+                    setOtpCode(data)
                     if (data.success === false) {
                         toast.error("Email is already taken")
+                        setSpinner(false)
                     }
                     else {
                         setShowModal(true)
+                        setSpinner(false)
                     }
                 })
         }
     }
+
+
+
+
 
     const myForm = new FormData()
     myForm.append("user_name", user.user_name)
@@ -52,47 +57,7 @@ function Reg() {
     myForm.append("emp_date", dateToday())
     myForm.append("role_id", "63b5786af12ca3d559688b2b")
     myForm.append("image", user.image)
-    // myForm.append("verified_at", "")
-    // myForm.append("expiration_date", "")
 
-
-
-    function verifyUser() {
-        if (verify === cur_ver.current_verification) {
-
-            fetch(`${url}/users`, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    "user_name": cur_ver.user_name,
-                    "address": cur_ver.address,
-                    "email": cur_ver.email,
-                    "phone": cur_ver.phone,
-                    "password": cur_ver.password,
-                    "gender": cur_ver.gender,
-                    "emp_date": dateToday(),
-                    "role_id": "63b5786af12ca3d559688b2b",
-                    "image": cur_ver.image,
-                    "verified_at": "verified",
-                    "id": cur_ver._id,
-                })
-
-            })
-                .then(resp => resp.json())
-                .then((data) => {
-                    console.log(data)
-                })
-
-            toast.success("verification successful!")
-
-            setTimeout(() => {
-                navigate("/signin")
-            }, 1000);
-        }
-        else {
-            toast.error("wrong verification code!")
-        }
-    }
 
 
 
@@ -152,10 +117,13 @@ function Reg() {
 
                                 </form>
 
-                                <div className="form_btn">
-                                    <button onClick={() => createUser()} data-bs-toggle="modal" data-bs-target={showModal ? "#exampleModal" : null}>Register</button>
-                                </div>
-                                <div className="form_switch">
+                                {/* <div className="form_btn">
+                                    <button onClick={() => createUser()} data-bs-toggle="modal" data-bs-target={showModal ? "#exampleModal" : null}> Register</button>
+                                </div> */}
+                                
+                                <Button  fn={createUser} spin={<img src={spin} alt="loading..." className="spin" />} text="Register" styles="form_btn" />
+                                
+                                <div className="form_switch" >
                                     <p>Have an account? <Link className="form_navigate" to="/signin" >Sign in</Link></p>
                                 </div>
                             </div>
@@ -165,31 +133,9 @@ function Reg() {
             </div>
 
             {
-                showModal && <div className="verify_modal_container">
-                    <div className={!darkbg ? "verify_modal" : "verify_modal admin_mode_dark"}>
-                        <div onClick={() => setShowModal(false)} className="modal_close"><IoCloseSharp /></div>
-                        <div className="my_modal_details">
-                            <div className="pt-3">
-                                <div>Please enter email verification</div>
-
-                                <div className="form_input verify_input">
-                                    <input type="number" className={err && verify === "" ? "err" : null} value={verify} onChange={(e) => setVerify(e.target.value)} />
-                                </div>
-
-                                <div className="verify_btn">
-                                    <div className="verify_btn_bg">
-                                        <button>Resend</button>
-                                    </div>
-                                    <div className="verify_btn_bg">
-                                        <button onClick={() => verifyUser()} style={{ backgroundColor: "#ffa600" }}>Comfirm</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                showModal && <VerifyModal />
             }
+
         </div>
     )
 }

@@ -9,7 +9,6 @@ function HomeSilder() {
     return (
         <div>
             <div className="home_slider">
-
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
                     {/* <div className="menu_ul">
                         <div> <Link className="menu_list">Super deals</Link> </div>
