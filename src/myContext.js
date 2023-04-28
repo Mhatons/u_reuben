@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { createContext } from "react"
 import { useState } from "react"
 import logo from "./Components/images/Logo UncleReuben.png"
-import spinner from "./Components/images/loader.gif"
+import spin from "./Components/images/spin.gif"
 import { HiMoon, HiSun } from "react-icons/hi2"
 
 export const myContext = createContext()
@@ -222,7 +222,7 @@ function PostProvider({ children }) {
         window.scrollTo(0, 0)
     }
 
-    function discount(e){
+    function discount(e) {
         const rate = parseFloat(e * discountRate / 100)
         const discountPercent = e - rate
         return discountPercent
@@ -269,6 +269,9 @@ function PostProvider({ children }) {
     const [branchExpenese, setBranchExpenese] = useState([])
 
     const [cartSum, setCartSum] = useState("")
+    const [showModal, setShowModal] = useState(false)
+    const [otpCode, setOtpCode] = useState("")
+    const [spinner, setSpinner] = useState(false)
 
 
 
@@ -321,7 +324,6 @@ function PostProvider({ children }) {
         toAdmin,
         profilePics,
         logo,
-        spinner,
         url,
         err,
         setErr,
@@ -349,6 +351,13 @@ function PostProvider({ children }) {
         setShowMore,
         discount,
         discountRate,
+        showModal,
+        setShowModal,
+        setOtpCode,
+        otpCode,
+        spin,
+        spinner,
+        setSpinner,
 
         userInfo,
         setUserInfo,
