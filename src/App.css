@@ -1047,14 +1047,17 @@
 .form_btn button{
   width: 100%; border: none; outline: none; background-color: #ffa600; padding: 0.5em 0em; border-radius: 4px;
 }
+.formBtn_dark button{
+  background-color: #8b8a8a;
+}
 .form_switch{
   font-size: 13px; padding-top: 2em; color: #8e8e8e;
 }
 .form_navigate{
-  color: #8e8e8e; font-weight: 500; text-decoration: none; padding-left: 5px;
+  color: #8e8e8e; font-weight: 500; text-decoration: none; padding-left: 5px; cursor: pointer;
 }
 .form_navigate:hover{
-  color: #ffa600;
+  color: #ffa600;font-weight: 600;
 }
 .err{
   border: 2px solid #ff0000 !important;
@@ -1124,7 +1127,7 @@
   position: fixed; width: 24%; text-align: center;
 }
 .myprofile_img img{
-  width: 70%; object-fit: cover; border-radius: 50%; object-position: center; margin: auto; height: 300px;
+  width: 80%; object-fit: contain; border-radius: 50%; object-position: center; margin: auto;
 }
 .mydetails_sect{
   width: 72%;

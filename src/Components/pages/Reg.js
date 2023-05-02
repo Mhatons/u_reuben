@@ -12,7 +12,7 @@ import VerifyModal from "../Files/VerifyModal"
 import Button from "../Button"
 function Reg() {
 
-    const { darkbg, setDarkbg, updateModal, url, err, setErr, dateToday, setOtpCode, setBtnSpinner, spin, showModal, setShowModal } = useContext(myContext)
+    const { darkbg, setDarkbg, updateModal, url, err, setErr, dateToday, setOtpCode, setBtnSpinner, spin, showModal, setShowModal, btnSpinner } = useContext(myContext)
 
 
     const [user, setUser] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
@@ -40,6 +40,23 @@ function Reg() {
                         setBtnSpinner(false)
                     }
                 })
+        }
+    }
+
+
+    function resendOtp() {
+        try {
+            fetch(`${url}/users/otp`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "email": user.email })
+            })
+                .then(resp => resp.json())
+                .then((data) => {
+                    setOtpCode(data)
+                })
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -121,7 +138,7 @@ function Reg() {
                                     <button onClick={() => createUser()} data-bs-toggle="modal" data-bs-target={showModal ? "#exampleModal" : null}> Register</button>
                                 </div> */}
                                 
-                                <Button  fn={createUser} spin={<img src={spin} alt="loading..." className="spin" />} text="Register" styles="form_btn" />
+                                <Button  fn={createUser} spin={<img src={spin} alt="loading..." className="spin" />} text="Register" styles={btnSpinner? "form_btn formBtn_dark": "form_btn"} />
                                 
                                 <div className="form_switch" >
                                     <p>Have an account? <Link className="form_navigate" to="/signin" >Sign in</Link></p>
@@ -133,7 +150,7 @@ function Reg() {
             </div>
 
             {
-                showModal && <VerifyModal />
+                showModal && <VerifyModal fun={resendOtp} />
             }
 
         </div>
