@@ -219,6 +219,7 @@ function PostProvider({ children }) {
         return date
     }
 
+
     function toTopPage() {
         window.scrollTo(0, 0)
     }
@@ -282,6 +283,7 @@ function PostProvider({ children }) {
     const [salesTotal, setSalesTotal] = useState("")
     const [totalSale, setTotalSale] = useState("")
     const [totalBranchExpenses, setTotalBranchExpenses] = useState("")
+    
 
     useEffect(() => {
         getLocalUser()

@@ -1,20 +1,24 @@
 import { useContext, useState } from "react"
 import { myContext } from "../../myContext"
-import { IoTrashSharp } from "react-icons/io5"
+import { IoTrashSharp, IoPencil, IoCreate } from "react-icons/io5"
+import { BsFillPenFill } from "react-icons/bs"
 import { useNavigate, useParams } from "react-router-dom"
 import no_cart from "../images/EleOsAnim.webp"
 import { useEffect } from "react"
+import Modal from "./Modal"
 
 function ProfileDetails() {
-    const { profilePics, userInfo, orders, darkbg, url, deleteProduct, } = useContext(myContext)
+    const { profilePics, userInfo, orders, darkbg, url, deleteProduct, setModal, modal } = useContext(myContext)
     const products = [...orders].reverse()
     const [userDeatils, setUserDetails] = useState({})
     const navigate = useNavigate()
     const [image, setImage] = useState("")
 
+    const [edit, setEdit] = useState({name: "", password: "", phone: ""})
+
     const { id } = useParams()
 
-//    let myImage = URL.createObjectURL(userInfo.image)
+    //    let myImage = URL.createObjectURL(userInfo.image)
 
     useEffect(() => {
         fetch(`${url}/users/${id}`)
@@ -26,15 +30,22 @@ function ProfileDetails() {
 
 
     return (
-        <div style={{backgroundImage: ""}} className={!darkbg ? "details_bg" : "details_bg darkMode"}>
+        <div style={{ backgroundImage: "" }} className={!darkbg ? "details_bg" : "details_bg darkMode"}>
             <div>
                 <div className="details_header">
 
                 </div>
                 <div className="mydetails">
-                    <div className="myprofile_img">
+                    <div>
                         <div className="my_profile_details">
-                        <img src={`${url}/uploads/${userDeatils.image}`} alt="item" />
+                            <div className="myprofile_img">
+                                <img src={`${url}/uploads/${userDeatils.image}`} alt="item" />
+                                <span data-bs-toggle="modal" data-bs-target="#exampleModal"  className={`position-absolute top-0 left-0 ${darkbg? "bg-light text-dark": "bg-dark text-light"} rounded-circle p-2 pb-2 pt-1`}> <BsFillPenFill /> </span>
+                            </div>
+
+                            <Modal title={"Update Profile"} />
+                            
+                            
                             <div>
                                 <div className="detail_container">
                                     <div className={!darkbg && userDeatils.gender === "female" ? "detail_holder_female" : !darkbg && userInfo.gender === "male" ? "detail_holder_male" : "detail_holder2"}>

@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useRef } from "react";
 
-const VerifyModal = () => {
+const VerifyModal = ({fun}) => {
     const [otp, setOtp] = useState(new Array(6).fill(""))
     const code = useRef("")
-    const { setShowModal, darkbg, otpCode, url, dateToday, logo } = useContext(myContext)
+    const { setShowModal, darkbg, otpCode, url, dateToday, logo, resendOtp, setOtpCode } = useContext(myContext)
     const navigate = useNavigate()
 
     function handleChange(e, index) {
@@ -43,10 +43,12 @@ const VerifyModal = () => {
 
 
 
+
+
 function handlePaste(e){
     const value = e.clipboardData.getData("text")
     // if(isNaN(value)) return false
-console.log(value.toString().split(""))
+// console.log(value.toString().split(""))
     setOtp(value.toString().split(""))
     e.target.lastSibling.focus()
     // console.log(otp)
@@ -55,6 +57,7 @@ console.log(value.toString().split(""))
 
 
     const verifyUser = (e) => { 
+        console.log(otpCode)
         if (e.length === 6 && e === otpCode.current_verification) {
 
             fetch(`${url}/users`, {
@@ -78,8 +81,10 @@ console.log(value.toString().split(""))
                 .then(resp => resp.json())
                 .then((data) => {
                     console.log(data)
+                    setOtpCode("")
                 })
             toast.success("verification successful!")
+            setShowModal(false)
             setTimeout(() => {
                 navigate("/signin")
             }, 1000);
@@ -89,6 +94,9 @@ console.log(value.toString().split(""))
         }
     }
 
+    
+
+
 
     return (
         <div className="">
@@ -96,7 +104,7 @@ console.log(value.toString().split(""))
                 <div className={!darkbg ? "verify_modal" : "verify_modal darkMode"}>
                     <div onClick={() => setShowModal(false)} className="modal_close"><IoCloseSharp /></div>
                     <div className="verify_modal_details">
-                        <div className="form_switch text-dark">
+                        <div className={!darkbg ? "form_switch text-dark": "form_switch"}>
                             <div className="verify_modal_details_img"><img src={logo} alt="logo" /></div>
                             <p>Please enter the six digit code sent to your email to verify your account</p>
                         </div>
@@ -129,7 +137,7 @@ console.log(value.toString().split(""))
                         </div>
 
                         <div className="form_switch">
-                            <p>Didn't get the code? <span className="form_navigate" >Resend</span></p>
+                            <p>Didn't get the code? <span onClick={() => fun()} className="form_navigate" >Resend</span></p>
                         </div>
                     </div>
                 </div>
