@@ -6,6 +6,7 @@ import HomeSilder from "./HomeSlider"
 import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { myContext } from "../../myContext"
+import Button from "../Button"
 
 function Home_banner() {
 
@@ -73,9 +74,14 @@ function Home_banner() {
                                             <div className="homeProduct_sect">
                                                 <section className="homeProduct_img">
                                                     <img src={`${url}/uploads/${data.image}`}  alt="" />
-                                                    <div className="btn_shop">
-                                                        <Link className="btn_shop_header" onClick={() => toTopPage()} to={`/product/${data._id}`} style={{ textDecoration: "none" }}><button>Shop now</button></Link>
-                                                    </div>
+                                                    {/* <div className="btn_shop">
+                                                        <Link className="btn_shop_header" 
+                                                        onClick={() => toTopPage()} 
+                                                        to={`/product/${data._id}`} 
+                                                        style={{ textDecoration: "none" }}>
+                                                        <button>Shop now</button>
+                                                        </Link>
+                                                    </div> */}
                                                 </section>
                                                 <section className="homeProduct_txt">
                                                     <h2 className="homeProduct_title">{data.title}</h2>
