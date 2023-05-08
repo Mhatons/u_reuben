@@ -20,7 +20,7 @@ function Reg() {
 
 
     const createUser = () => {
-        if (user.user_name === "" || user.address === "" || user.email === "" || user.phone === "" || user.image === "" || user.password === "" || user.gender === "") {
+        if ( user.email === "" || user.phone === "" || user.password === "" ) {
             setErr(true)
         }
         else {
@@ -65,15 +65,15 @@ function Reg() {
 
 
     const myForm = new FormData()
-    myForm.append("user_name", user.user_name)
-    myForm.append("address", user.address)
+    // myForm.append("user_name", user.user_name)
+    // myForm.append("address", user.address)
     myForm.append("email", user.email)
     myForm.append("phone", user.phone)
     myForm.append("password", user.password)
-    myForm.append("gender", user.gender)
+    // myForm.append("gender", user.gender)
     myForm.append("emp_date", dateToday())
     myForm.append("role_id", "63b5786af12ca3d559688b2b")
-    myForm.append("image", user.image)
+    // myForm.append("image", user.image)
 
 
 
@@ -86,9 +86,9 @@ function Reg() {
             <div className="modal_bg2">
 
                 <div className="modal_bg">
-                    <div className={!darkbg ? "my_modal modal_dark_txt" : "my_modal my_modal_dark"}>
+                    <div className={`${darkbg ? "my_modal_dark": null} h-75 mt-5 modal_dark_txt my_modal`}>
                         <div className="my_modal_details">
-                            <h4>Register</h4>
+                            <h4 className={`${darkbg ? "text-light": null}`}>Register</h4>
 
                             {/* <div className="my_modal_links">
                                 <img src={facebookLogo} alt="" />
@@ -97,8 +97,8 @@ function Reg() {
 
                             <div className="pt-3">
                                 <form className="form_input reg_form">
-                                    <div>Full name</div>
-                                    <input type="text" name="user_name" className={err && user.user_name === "" ? "err" : null} placeholder={updateModal ? userID.user_name : "Full name(s)"} value={user.user_name} onChange={(e) => setUser({ ...user, user_name: e.target.value })} />
+                                    {/* <div>Full name</div>
+                                    <input type="text" name="user_name" className={err && user.user_name === "" ? "err" : null} placeholder={updateModal ? userID.user_name : "Full name(s)"} value={user.user_name} onChange={(e) => setUser({ ...user, user_name: e.target.value })} /> */}
 
                                     <div>Email</div>
                                     <input type="email" name="email" className={err && user.email === "" ? "err" : null} placeholder={updateModal ? userID.email : "Email"} value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
@@ -109,39 +109,35 @@ function Reg() {
                                     </div>
                                     <div>
                                         <div>Password</div>
-                                        <input type="password" minLength="6" name="password" placeholder="Password" className={err && user.password === "" ? "err" : null} value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                                        <input type="password" minLength={6} name="password" placeholder="Password" className={err && user.password === "" ? "err" : null} value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
                                     </div>
 
-                                    <div>Addess</div>
-                                    <input type="text" name="address" className={err && user.address === "" ? "err" : null} placeholder={updateModal ? userID.address : "Address"} value={user.address} onChange={(e) => setUser({ ...user, address: e.target.value })} />
+                                    {/* <div>Addess</div>
+                                    <input type="text" name="address" className={err && user.address === "" ? "err" : null} placeholder={updateModal ? userID.address : "Address"} value={user.address} onChange={(e) => setUser({ ...user, address: e.target.value })} /> */}
 
-                                    <div className="reg_select">
+                                    {/* <div className="reg_select">
                                         <div>Gender</div>
                                         <select name="gender" className={err && user.gender === "" ? "err" : null} value={user.gender} onChange={(e) => setUser({ ...user, gender: e.target.value })}>
-                                            <option>Select gender</option>
+                                            <option className="d-none">Select gender</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                             <option value="others">Prefer not to say</option>
                                         </select>
-                                    </div>
+                                    </div> */}
 
-                                    <div>
+                                    {/* <div>
                                         <div>
                                             <div>Profile photo</div>
                                             <input type="file" name="image" accept="image/*,video/*" className={err && user.image === "" ? "err" : "image_color"} onChange={(e) => setUser({ ...user, image: e.target.files[0] })} />
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                 </form>
-
-                                {/* <div className="form_btn">
-                                    <button onClick={() => createUser()} data-bs-toggle="modal" data-bs-target={showModal ? "#exampleModal" : null}> Register</button>
-                                </div> */}
                                 
                                 <Button  fn={createUser} spin={<img src={spin} alt="loading..." className="spin" />} text="Register" styles={btnSpinner? "form_btn formBtn_dark": "form_btn"} />
                                 
                                 <div className="form_switch" >
-                                    <p>Have an account? <Link className="form_navigate" to="/signin" >Sign in</Link></p>
+                                    <p>Have an account? <Link className={`form_navigate ${darkbg? "text-light": null}`}  to="/signin" >Sign in</Link></p>
                                 </div>
                             </div>
                         </div>
