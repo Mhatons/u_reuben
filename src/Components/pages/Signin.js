@@ -73,7 +73,6 @@ function Signin() {
                     // console.log(data.user.verified_at)
                     setTimeout(() => {
                         setBtnSpinner(false)
-                        setShowModal(false)
                     }, 2000)
                 }).catch(err => console.log(err))
         }
