@@ -1009,12 +1009,12 @@
   text-align: left
 }
 .form_input input{
-  width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 1em 0em; margin-bottom: 0.7em; font-family: cursive;
+  width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 1em 0em; margin-bottom: 0.7em; font-family: montserrat;
   color: white; font-size: 20px; text-align: center; color: #424242;
   /* #EBECFE */
 }
 .reg_form input{
-  width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 0.6em; margin-bottom: 0.7em; font-family: cursive;
+  width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 0.6em; margin-bottom: 0.7em; font-family: montserrat;
   color: white;  font-size: 15px; text-align: left;  color: #424242;
 }
 .reg_select select{
