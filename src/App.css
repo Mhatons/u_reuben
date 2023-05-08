@@ -984,8 +984,7 @@
   height: 650px; overflow: scroll; position: fixed; left: 0; right: 0; margin-top: 1em;
 }
 .sign_modal{
-  border-radius: 5px; background-color: #ededf2; width: 45%; margin: auto; text-align: center; color: white;
-  height: 410px;  margin-top: 8%;
+    margin-top: 8%;
 }
 .modal_dark_txt{
   color: #424242;
@@ -1010,7 +1009,7 @@
 }
 .form_input input{
   width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 1em 0em; margin-bottom: 0.7em; font-family: montserrat;
-  color: white; font-size: 20px; text-align: center; color: #424242;
+  color: white; font-size: 20px;
   /* #EBECFE */
 }
 .reg_form input{
@@ -1018,11 +1017,11 @@
   color: white;  font-size: 15px; text-align: left;  color: #424242;
 }
 .reg_select select{
-  width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 0.6em !important; margin-bottom: 0.7em; font-family: cursive;
+  width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 0.6em !important; margin-bottom: 0.7em; font-family: montserrat;
   color: white; font-size: 15px !important; text-align: left !important;
 }
 .form_input select{
-  width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 1em 0em; margin-bottom: 0.7em; font-family: cursive;
+  width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 1em 0em; margin-bottom: 0.7em; font-family: montserrat;
   color: white; font-size: 20px; text-align: center; color: #424242;
 }
 .my_modal_dark input{
@@ -1054,7 +1053,7 @@
   font-size: 13px; padding-top: 2em; color: #8e8e8e;
 }
 .form_navigate{
-  color: #8e8e8e; font-weight: 500; text-decoration: none; padding-left: 5px; cursor: pointer;
+  color: #404040; font-weight: 500; text-decoration: none; padding-left: 5px; cursor: pointer;
 }
 .form_navigate:hover{
   color: #ffa600;font-weight: 600;
@@ -1281,7 +1280,7 @@
     display: none;
   }
   .my_modal{
-    width: 80%;
+    width: 90%;
   }
   .cart_item_txt{
     max-height: 140px; width: 49%;

@@ -120,8 +120,9 @@ function Signin() {
             <div className="modal_bg1">
 
                 <div className="modal_bg">
-                    <div className={!darkbg ? "my_modal sign_modal modal_dark_txt" : "my_modal my_modal_dark sign_modal"}>
-                        <div className="my_modal_details">
+                    <div className={`my_modal sign_modal modal_dark_txt h-50 ${darkbg ? "my_modal_dark": null}`}>
+                    {/* <div className={!darkbg ? "my_modal sign_modal modal_dark_txt" : "my_modal my_modal_dark sign_modal"}> */}
+                        <div className="my_modal_details pt-4">
                             <h4>Sign In</h4>
                             {/* <div className="my_modal_links">
                                 <img src={facebookLogo} alt="" />
@@ -146,7 +147,7 @@ function Signin() {
                                     showModal && <VerifyModal fun={resendOtp} />
                                 }
                                 <div className="form_switch">
-                                    <p>Not a member? <Link className="form_navigate" to="/reg" >Sign up now</Link></p>
+                                    <p>Not a member? <Link className={`form_navigate ${darkbg? "text-light": null}`}  to="/reg" >Register</Link></p>
                                 </div>
                             </div>
                         </div>
