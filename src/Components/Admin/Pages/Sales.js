@@ -5,11 +5,10 @@ import { myContext } from "../../../myContext"
 
 import Admin_nav from "../Files/Admin_nav"
 import SideBar from "../Files/SideBar"
-import { toast } from "react-toastify"
 
 
 function Sales() {
-    const { darkbg, modal, setModal, updateModal, setUpdateModal, err, setErr, url, reverseSales, reverseBranch, reverseProduct, salesTotal, reverseCategories, dateToday, userInfo, spinner } = useContext(myContext)
+    const { darkbg, modal, setModal, updateModal, setUpdateModal, err, setErr, url, reverseSales, reverseBranch, reverseProduct, salesTotal, reverseCategories, dateToday, userInfo, spinner, success } = useContext(myContext)
     const [sale, setSale] = useState({ payment_id: "", product_id: "", delivery_id: "", quantity: "", category_id: "" })
 
     const [getSales, setGetSales] = useState([])
@@ -93,26 +92,11 @@ function Sales() {
         }
         return items
 
-        // if (getSales) {
-        //     getSales.map((data) => {
-        //         console.log(data)
-        //         items = data
-        //     });
-        // }
-        // return items
-
     }
-
-    // const productsArray = getSales.map(obj => obj.product_details);
-    // console.log(productsArray)
 
 
 
     const createSale = () => {
-        // if (sale.payment_id === "" || sale.product_id === "" || sale.delivery_id === "" || sale.quantity === "") {
-        //     setErr(true)
-        // }
-        // else {
         fetch(`${url}/sales`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -130,7 +114,7 @@ function Sales() {
             })
         }).then(resp => resp.json())
             .then((data) => {
-                toast.success("Order successfully created")
+                success("Order successfully created")
                 clearStorage()
                 document.getElementById("create_sale_btn").style.display = "none"
             })

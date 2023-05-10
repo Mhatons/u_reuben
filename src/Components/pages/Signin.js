@@ -1,20 +1,17 @@
 import { Link, useNavigate } from "react-router-dom"
-import facebookLogo from "../images/Facebook-Logo-2005-2015.png"
-import googleLogo from "../images/Google-logo.png"
+// import facebookLogo from "../images/Facebook-Logo-2005-2015.png"
+// import googleLogo from "../images/Google-logo.png"
 
-import { IoLocation, IoCartOutline, IoInvertModeSharp, IoInvertMode } from "react-icons/io5"
 import React, { useContext, useRef, useState } from "react"
 import { myContext } from "../../myContext"
 import Nav2 from "../Files/Nav2"
 import Nav from "../Files/Nav"
-import { toast } from "react-toastify"
 import Button from "../Button"
 import VerifyModal from "../Files/VerifyModal"
-import { useEffect } from "react"
 
 function Signin() {
 
-    const { darkbg, setDarkbg, url, err, setErr, setUserInfo, setLogin, setAdminLogin, spin, setBtnSpinner, setShowModal, showModal, btnSpinner, setOtpCode } = useContext(myContext)
+    const { darkbg, setDarkbg, url, err, setErr, setUserInfo, setLogin, setAdminLogin, spin, setBtnSpinner, setShowModal, showModal, btnSpinner, setOtpCode, error, success, warning } = useContext(myContext)
 
 
     const [user, setUser] = useState({ email: "", password: "" })
@@ -40,15 +37,15 @@ function Signin() {
                     console.log(data)
 
                     if (data.message === "incorrect user password") {
-                        toast.error("Incorrect password")
+                        error("Incorrect password")
                     }
                     else if (data.message === "user does not exist") {
-                        toast.error("User does not exist")
+                        error("User does not exist")
                     }
                     setBtnSpinner(false)
                     setTimeout(() => {
                         if (data.success && data.user.verified_at === "verified") {
-                            toast.success("Login successful")
+                            success("Login successful")
                             setLogin(true)
                             const user = data.user;
                             localStorage.setItem("user", JSON.stringify(user))
@@ -64,7 +61,7 @@ function Signin() {
                             }, 1000)
                         }
                         else if (data.success && data.user.verified_at !== "verified") {
-                            toast.warn("User not verified")
+                            warning("User not verified")
                             setShowModal(true)
                             resendOtp(data)
                         }
@@ -131,15 +128,28 @@ function Signin() {
                                 <div className="form_input reg_form">
                                     <div>
                                         <div>Email</div>
-                                        <input type="text" className={err && user.email === "" ? "err" : null} placeholder="Enter your email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
+                                        <input type="text" 
+                                        className={err && user.email === "" ? "err" : null} placeholder="Enter your email" 
+                                        value={user.email} 
+                                        onChange={(e) => setUser({ ...user, email: e.target.value })} />
                                     </div>
                                     <div>
                                         <div>Password</div>
-                                        <input type="password" className={err && user.password === "" ? "err" : null} placeholder="Enter your password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                                        <input type="password" 
+                                        className={err && user.password === "" ? "err" : null} placeholder="Enter your password" 
+                                        value={user.password} 
+                                        onChange={(e) => setUser({ ...user, password: e.target.value })} />
                                     </div>
                                 </div>
 
-                                <Button fn={logUser} spin={<img src={spin} alt="loading..." className="spin" />} text="sign in" styles={btnSpinner? "form_btn formBtn_dark": "form_btn"} />
+                                <Button 
+                                fn={logUser} 
+                                spin={<img src={spin} 
+                                alt="loading..." 
+                                className="spin" />} 
+                                text="sign in" 
+                                styles={btnSpinner? "form_btn formBtn_dark": "form_btn"} 
+                                />
 
 
                                 {

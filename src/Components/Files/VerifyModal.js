@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { myContext } from "../../myContext";
 import { IoCloseSharp } from "react-icons/io5"
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useRef } from "react";
@@ -9,7 +8,7 @@ import { useRef } from "react";
 const VerifyModal = ({fun}) => {
     const [otp, setOtp] = useState(new Array(6).fill(""))
     const code = useRef("")
-    const { setShowModal, darkbg, otpCode, url, dateToday, logo, resendOtp, setOtpCode } = useContext(myContext)
+    const { setShowModal, darkbg, otpCode, url, dateToday, logo, resendOtp, setOtpCode, setLogin, setAdminLogin, success, error } = useContext(myContext)
     const navigate = useNavigate()
 
     function handleChange(e, index) {
@@ -82,15 +81,32 @@ function handlePaste(e){
                 .then((data) => {
                     console.log(data)
                     setOtpCode("")
+
+                     success("Login successful")
+                            setLogin(true)
+                            console.log(data.user)
+                            const user = data;
+                            // const user = data.user;
+                            localStorage.setItem("user", JSON.stringify(user))
+
+                            setTimeout(() => {
+                                if (user.role_id === "63b5786af12ca3d559688b2b") {
+                                    navigate("/")
+                                }
+                                else {
+                                    setAdminLogin(true)
+                                    navigate("/admin")
+                                }
+                            }, 1000)
                 })
-            toast.success("verification successful!")
+            success("verification successful!")
             setShowModal(false)
             setTimeout(() => {
                 navigate("/signin")
             }, 1000);
         }
         else if (e.length === 6 && e !== otpCode.current_verification) {
-            toast.error("wrong verification code!")
+            error("wrong verification code!")
         }
     }
 
@@ -116,6 +132,7 @@ function handlePaste(e){
                                 otp.map((data, index) => {
                                     return (
                                         <input
+                                        key={index}
                                             type="text" 
                                             onPaste={(e)=>handlePaste(e)}
                                             value={data}

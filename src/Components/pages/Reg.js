@@ -1,38 +1,52 @@
-import { Link, useNavigate } from "react-router-dom"
-import facebookLogo from "../images/Facebook-Logo-2005-2015.png"
-import googleLogo from "../images/Google-logo.png"
+import { Link } from "react-router-dom"
+// import facebookLogo from "../images/Facebook-Logo-2005-2015.png"
+// import googleLogo from "../images/Google-logo.png"
 
 
 import { useContext, useState } from "react"
 import { myContext } from "../../myContext"
 import Nav2 from "../Files/Nav2"
 import Nav from "../Files/Nav"
-import { toast } from "react-toastify"
 import VerifyModal from "../Files/VerifyModal"
 import Button from "../Button"
+import Input from "../input/Input"
 function Reg() {
 
-    const { darkbg, setDarkbg, updateModal, url, err, setErr, dateToday, setOtpCode, setBtnSpinner, spin, showModal, setShowModal, btnSpinner } = useContext(myContext)
+    const { darkbg, setDarkbg, updateModal, url, err, setErr, dateToday, setOtpCode, setBtnSpinner, spin, showModal, setShowModal, btnSpinner, error } = useContext(myContext)
 
 
-    const [user, setUser] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
+    const [user, setUser] = useState({ email: "", confirmPassword: "", password: ""})
     const [userID, setUserID] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
+
+    const [unmatch, setUnmatch] = useState(false)
+
+
+//     const handleChange = (event) => {
+//     setPassword(event.target.value);
+//     setPasswordsMatch(event.target.value === confirmPassword);
+//   };
 
 
     const createUser = () => {
-        if ( user.email === "" || user.phone === "" || user.password === "" ) {
+        
+        if ( user.email === "" || user.confirmPassword === "" || user.password === "" ) {
             setErr(true)
         }
+        if(user.password !== user.confirmPassword){
+            setUnmatch(true)
+        }
         else {
+            setUnmatch(false)
             setBtnSpinner(true)
             fetch(`${url}/users`, {
                 method: "POST",
                 body: myForm
             }).then(resp => resp.json())
                 .then((data) => {
+                    console.log(data)
                     setOtpCode(data)
                     if (data.success === false) {
-                        toast.error("Email is already taken")
+                        error("email already assigned")
                         setBtnSpinner(false)
                     }
                     else {
@@ -68,7 +82,7 @@ function Reg() {
     // myForm.append("user_name", user.user_name)
     // myForm.append("address", user.address)
     myForm.append("email", user.email)
-    myForm.append("phone", user.phone)
+    // myForm.append("phone", user.phone)
     myForm.append("password", user.password)
     // myForm.append("gender", user.gender)
     myForm.append("emp_date", dateToday())
@@ -101,16 +115,45 @@ function Reg() {
                                     <input type="text" name="user_name" className={err && user.user_name === "" ? "err" : null} placeholder={updateModal ? userID.user_name : "Full name(s)"} value={user.user_name} onChange={(e) => setUser({ ...user, user_name: e.target.value })} /> */}
 
                                     <div>Email</div>
-                                    <input type="email" name="email" className={err && user.email === "" ? "err" : null} placeholder={updateModal ? userID.email : "Email"} value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
+                                    <input type="email" 
+                                    className={err && user.email === "" ? "err" : null} 
+                                    placeholder={updateModal ? userID.email : "Email"} 
+                                    value={user.email} 
+                                    onChange={(e) => setUser({ ...user, email: e.target.value })} />
 
-                                    <div>
+                                    {/* <div>
                                         <div>Mobile number</div>
                                         <input type="number" name="phone" className={err && user.phone === "" ? "err" : null} placeholder={updateModal ? userID.phone : "Mobile no"} value={user.phone} onChange={(e) => setUser({ ...user, phone: e.target.value })} />
-                                    </div>
+                                    </div> */}
                                     <div>
                                         <div>Password</div>
-                                        <input type="password" minLength={6} name="password" placeholder="Password" className={err && user.password === "" ? "err" : null} value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                                        <input type="password" 
+                                        minLength={6} 
+                                        placeholder="Password" 
+                                        className={err && user.password === "" ? "err" : null} 
+                                        value={user.password} 
+                                        onChange={(e) => setUser({ ...user, password: e.target.value })} />
                                     </div>
+
+                                    <div>
+                                        <div>Confirm Password</div>
+                                        <input type="password" 
+                                        minLength={6} 
+                                        placeholder="comfirm password" 
+                                        className={err && user.confirmPassword === "" ? "err" : null} 
+                                        // value={user.confirmPassword} 
+                                        onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} />
+                                        {
+                                            unmatch && <span className="text-danger">Password does not match</span>
+                                        }
+                                    </div>
+
+                                    {/* <Input text={"Confirm password"}
+                                    styles={err && user.confirmPassword === "" ? "err" : null}
+                                    value={user.confirmPassword}
+                                    type="password" 
+                                    fn={(e) => setUser({ ...user, confirmPassword: e.target.value })} 
+                                    /> */}
 
                                     {/* <div>Addess</div>
                                     <input type="text" name="address" className={err && user.address === "" ? "err" : null} placeholder={updateModal ? userID.address : "Address"} value={user.address} onChange={(e) => setUser({ ...user, address: e.target.value })} /> */}

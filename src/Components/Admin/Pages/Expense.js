@@ -10,7 +10,7 @@ import SideBar from "../Files/SideBar"
 
 function Expense() {
 
-    const { darkbg, modal, setModal, updateModal, setUpdateModal, reverseExpenses, url, setErr, err, reverseBranch, deleteExpense, userInfo, num, dateToday, spinner } = useContext(myContext)
+    const { darkbg, modal, setModal, updateModal, setUpdateModal, reverseExpenses, url, setErr, err, reverseBranch, deleteExpense, userInfo, num, dateToday, spinner, success } = useContext(myContext)
 
     const [expenses, setExpenses] = useState({ amount: "", purpose: "", user_id: "", branch_id: "" })
     const [findExpenseID, setFindExpenseID] = useState({ amount: "", purpose: "", branch_id: "" })
@@ -33,6 +33,7 @@ function Expense() {
             }).then((resp) => resp.json)
                 .then((data) => {
                     setModal(false)
+                    success("expense created")
                 })
         }
     }
