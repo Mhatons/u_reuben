@@ -6,10 +6,9 @@ import { myContext } from "../../../myContext"
 
 import Admin_nav from "../Files/Admin_nav"
 import SideBar from "../Files/SideBar"
-import { toast } from "react-toastify"
 function ManageBranch() {
 
-    const { darkbg, modal, setModal, updateModal, setUpdateModal, err, setErr, url, reverseBranch, dateToday, spinner } = useContext(myContext)
+    const { darkbg, modal, setModal, updateModal, setUpdateModal, err, setErr, url, reverseBranch, dateToday, spinner, success } = useContext(myContext)
 
     const [branch, setBranch] = useState({ name: "", address: "" })
     const [findbranchID, setFindBranchID] = useState({ name: "", address: "" })
@@ -32,7 +31,7 @@ function ManageBranch() {
                 .then((data) => {
                     setBranch("")
                     setModal(false)
-                    toast.success("Branch created successfully")
+                    success("Branch created successfully")
                 })
         }
     }
@@ -64,7 +63,7 @@ function ManageBranch() {
             })
                 .then((resp) => resp.json())
                 .then((data) => {
-                    toast.success("branch updated successfully")
+                    success("branch updated successfully")
                     setModal(false)
                 })
         }

@@ -5,6 +5,7 @@ import logo from "./Components/images/Logo UncleReuben.png"
 import spin from "./Components/images/spin.gif"
 import spinner from "./Components/images/loader.gif"
 import { HiMoon, HiSun } from "react-icons/hi2"
+import { toast } from "react-toastify"
 
 export const myContext = createContext()
 
@@ -190,6 +191,17 @@ function PostProvider({ children }) {
         setLogin(false)
         setAdminLogin(false)
         setToAdmin(false)
+        success("sign out complete")
+    }
+
+    function success(e){
+        toast.success(e)
+    }
+    function error(e){
+        toast.error(e)
+    }
+    function warning(e){
+        toast.warn(e)
     }
 
     function getLocalProdcuts() {
@@ -324,6 +336,9 @@ function PostProvider({ children }) {
         clearItem,
         cartSum,
         setCartSum,
+        success,
+        error,
+        warning,
 
         toAdmin,
         profilePics,

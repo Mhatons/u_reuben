@@ -23,6 +23,7 @@ import Payments from './Components/Admin/Pages/Payments';
 import Deliveries from './Components/Admin/Pages/Deliveries';
 import Profile from './Components/pages/Profile';
 import Nav from './Components/Files/Nav';
+import Nav2 from './Components/Files/Nav2';
 
 
 function App() {

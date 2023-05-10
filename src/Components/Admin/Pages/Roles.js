@@ -6,10 +6,9 @@ import Admin_nav from "../Files/Admin_nav"
 import SideBar from "../Files/SideBar"
 import { myContext } from "../../../myContext"
 import { useState } from "react"
-import { toast } from "react-toastify"
 function Roles() {
 
-    const { darkbg, modal, setModal, updateModal, setUpdateModal, reverseRoles, err, setErr, url, spinner } = useContext(myContext)
+    const { darkbg, modal, setModal, updateModal, setUpdateModal, reverseRoles, err, setErr, url, spinner, success } = useContext(myContext)
 
     const [role, setRole] = useState("")
     const [fRole, setFRole] = useState("")
@@ -29,7 +28,7 @@ function Roles() {
             }).then((resp) => resp.json)
                 .then((data) => {
                     setRole("")
-                    toast.success("Role successfully created")
+                    success("Role successfully created")
                     setModal(false)
                 })
         }
@@ -61,7 +60,7 @@ function Roles() {
             })
                 .then((resp) => resp.json())
                 .then((data) => {
-                    toast.success("Role successfully updated")
+                    success("Role successfully updated")
                     setModal(false)
                     setRole("")
                 })

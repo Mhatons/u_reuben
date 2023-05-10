@@ -7,12 +7,11 @@ import Admin_nav from "../Files/Admin_nav"
 import SideBar from "../Files/SideBar"
 import { myContext } from "../../../myContext"
 import { useState } from "react"
-import { toast } from "react-toastify"
 
 function ManageProducts() {
 
     const { grid, setGrid, darkbg, modal, setModal, updateModal, setUpdateModal,
-        spinner, reverseProduct, url, err, setErr, reverseCategories, deleteProduct, dateToday, userInfo 
+        spinner, reverseProduct, success, url, err, setErr, reverseCategories, deleteProduct, dateToday, userInfo 
     } = useContext(myContext)
 
     const [product, setProduct] = useState({ title: "", product_category_id: "", image: "", description: "", date: "", user_id: "", price: "" })
@@ -33,7 +32,7 @@ function ManageProducts() {
             })
                 .then(resp => resp.json())
                 .then((data) => {
-                    toast.success("successful!")
+                    success("successful!")
                 })
         }
     }

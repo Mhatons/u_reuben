@@ -7,11 +7,10 @@ import { Link, useNavigate } from "react-router-dom"
 import Admin_nav from "../Files/Admin_nav"
 import SideBar from "../Files/SideBar"
 import { myContext } from "../../../myContext"
-import { toast } from "react-toastify"
 
 function Customers() {
 
-    const { grid, setGrid, darkbg, modal, setModal, updateModal, setUpdateModal, reverseUsers, url, deleteStaff, spinner, err, setErr, dateToday } = useContext(myContext)
+    const { grid, setGrid, darkbg, modal, setModal, updateModal, setUpdateModal, reverseUsers, url, deleteStaff, spinner, err, setErr, dateToday, success } = useContext(myContext)
 
     const [user, setUser] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
     const [userID, setUserID] = useState({ user_name: "", email: "", phone: "", image: "", role_id: "", password: "", address: "", gender: "" })
@@ -30,7 +29,7 @@ function Customers() {
             }).then(resp => resp.json())
                 .then((data) => {
                     setModal(false)
-                    toast.success("user successfully created")
+                    success("user successfully created")
                 })
         }
     }

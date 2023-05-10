@@ -22,7 +22,6 @@ function Admin() {
     return (
         <div>
             {
-                // userInfo.role_id !== "63b5786af12ca3d559688b2b" ? (
                     <div>
                         <div className="dashboard_top">
                             <div>
