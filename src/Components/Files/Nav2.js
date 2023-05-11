@@ -35,26 +35,6 @@ function Nav2() {
                 }
             </div>
             
-            {
-                showMore && <div className="show_more">
-
-                    {/* <div className="show_pageUp_event">
-                        {
-                            more && <div className="">
-                                <div onClick={() => toTopPage()} className="more_events"> <IoChevronUpSharp /> </div>
-                            </div>
-                        }
-                    </div>
-                    <div className="show_signs">
-                        {
-                            !more && <span onClick={() => setMore(true)}> <IoAddCircleSharp /> </span>
-                        }
-                        {
-                            more && <span onClick={() => setMore(false)}> <IoRemoveCircleSharp /> </span>
-                        }
-                    </div> */}
-                </div>
-            }
 
             <div className={darkbg ? "darkNav" : null}>
                 <nav className="navbar navbar-expand-lg nav">
@@ -78,8 +58,8 @@ function Nav2() {
                                     reverseCategories.map((data, i) => {
                                         return (
                                             <li> 
-                                                <Link className="categoty_li dropdown-item">{i + 1} 
-                                            <span className="ps-5 pe-5">{data.name}</span></Link> </li>
+                                                <Link className="categoty_li dropdown-item">
+                                            <span className="ps-2 pe-5">{data.name}</span></Link> </li>
                                         )
                                     })
                                 }

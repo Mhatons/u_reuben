@@ -115,13 +115,13 @@
 
 
 .home_banner_bg{
-  background-color: #f5f5f5;
+  background-color: #f5f5f5; 
 }
 .homeBanner{
   width: 80%; margin: auto; padding-top: 6em;
 }
 .homeBanner_products{
-  width: 90%; margin: auto; padding-top: 4em;
+  width: 85%; margin: auto; padding-top: 4em;
 }
 .homeBanner_products_bg{
   background-color: white;
@@ -186,11 +186,8 @@
   width: 50px; border-radius: 50%; margin-top: 1em;
 }
 .null_profile_pics{
-  font-size: 2em; background-color: #f5f5f5; border-radius: 50%; width: 20%; color: white; padding-bottom: 7px;
+  font-size: 2em; background-color: #f5f5f5; border-radius: 50%; width: 20%; color: #424242; padding-bottom: 7px;
   
-}
-.profilename{
-  color: white;
 }
 
 .account_banner{
@@ -214,16 +211,12 @@
 }
 
 .account_banner p{
-  font-size: 13px; padding-top: 0.5em; color: white;
+  font-size: 13px; padding-top: 0.5em; color: black;
 }
 .accountInfo{
-  border-radius: 10px; background-color: white; background-image: url(./Components/images/Beautiful-Style-Design-Luxury-Blue-Background-3038082.png);
-  background-size: 310px; background-position: top; background-repeat: no-repeat;
+  border-radius: 10px; background-color: white;; 
 }
 
-.accountInfo_null{
-  background-color: white; border-radius: 10px; padding-top: 1.5em;
-}
 .account_banner_slider{
   background-color: #f5f5f5; border-radius: 10px; width: 100%;
 }
@@ -327,7 +320,7 @@
   margin-top: 0.7em; margin-left: 0.7em; color: white;
 }
 .sub_header{
-  width: 100%; background-color: #EBECFE; font-weight: 700; padding: 0.5em 2em; font-size: 17px; border-top-right-radius: 10px;
+  width: 100%; background-color: #f0f0f0; font-weight: 700; padding: 0.5em 2em; font-size: 17px; border-top-right-radius: 10px;
   border-top-left-radius: 10px; margin-bottom: 3em; color: #575656;
 }
 
@@ -356,13 +349,13 @@
   display: flex; justify-content: space-between; align-items: center;
 }
 .footer_socials{
-  display: flex; gap: 1vw;
+  display: flex; gap: 1vw; padding-top: 1em;
 }
 .footer_socials img{
   background-color: white; border-radius: 50%;
 }
 .footer_socials img:hover{
-  background-color: #ff4
+  background-color: #ffa600
 }
 .footer_line{
   border-bottom: 1px solid #bebcbc; padding-top: 3em;
@@ -442,9 +435,6 @@
 .item:hover .item_amount{
   color: white; background-color: black; font-weight: 650; transition-duration: 0.5s; padding: 0em 0.2em;
 }
-/* .item:hover .items_grid_details{
-  color: #ff4000; background-color: #f5f5f5; font-weight: 650;
-} */
 
 .item{
   cursor: pointer;
@@ -478,15 +468,7 @@
   position: absolute; top: 0; bottom: 0; right: 0; left: 0; background-color: #2d270761; display: none; justify-content: center; align-items: center;
   border-top-left-radius: 10px; border-top-right-radius: 10px;
 }
-/* .buyItem_btn{
-  width: 8em; background-color: #ff9d00c3; height: 2.7em;
-} */
-/* .buyItem_btn button{
-  padding: 0.8em 0em; width: 100%; border: none; outline: none; font-size: 14px; background-color: #ff9d00; color: white; font-weight: 600;
-} */
-/* .buyItem_btn button:hover{
-  margin: 0.7em; transition: 0.5s;
-} */
+
 .toCart{
   position: absolute; top: 0; right: 0; color: white; font-size: 25px; margin-right: 10px; cursor: pointer; visibility: hidden;
 }
@@ -661,7 +643,7 @@
   width: 54%;
 }
 .product_img{
-  position: sticky; top: 8.5em;
+  position: sticky; top: 7.5em;
 }
 .sm_product_price{
   display: none;
@@ -776,7 +758,7 @@
 }
 .product_order{
   margin-top: 2em; border: 5px solid  transparent; border-image: url(./Components/images/background.png) 30 round;
-  border-image-repeat: stretch; padding: 0.5em; background-image: url(./Components/images/faded_logo.png); background-size: contain;
+  border-image-repeat: stretch; padding: 0.5em; background-image: url(./Components/images/logo_no_bg.png); background-size: contain;
   background-position: right; background-repeat: no-repeat;
 }
 .product_order span{
@@ -807,13 +789,13 @@
 
 
 .flip_sect_bg{
-  padding: 2em 0em; background: #EBECFE;
+  padding: 2em 0em; background: #f0f0f0;
 }
 .flip_sect{
-  width: 85%; margin: auto;
+  width: 90%; margin: auto; padding-bottom: 1em;
 }
 .flip_header{
-  background-color: black; color: gold; padding: 0.5em; border-radius: 10px; text-align: center; margin-bottom: 0.5em;
+  background-color: #8B8A8A; color: white; padding: 0.5em; border-radius: 10px; text-align: center; margin-bottom: 0.5em;
 }
 .flip_boxes{
   display: grid; grid-template-columns: repeat(6, 1fr); padding: 1em; gap: 1em; overflow: auto; white-space: nowrap;
@@ -1434,11 +1416,8 @@
   .homeProduct_sect{
     padding-bottom: 4em;
   }
-  /* .home_banner_bg{
-    background-color: #0f0e0e;
-  } */
   .homeBanner{
-    width: 100%; padding-top: 4em;
+    width: 100%; padding-top: 4em; 
   }
   .img_header img{
     height: 200px; border-radius: 0px;

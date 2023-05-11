@@ -15,19 +15,15 @@ import { myContext } from "../../myContext"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 
-import { toast } from "react-toastify"
 import Button from "../Button"
 
 function CartPage() {
 
-    const { login, setLogin, profilePics, cart, darkbg, setDarkbg, url, userInfo, orders, deleteProduct, dateToday, cartSum, setCartSum } = useContext(myContext)
+    const { login, setLogin, profilePics, cart, darkbg, setDarkbg, url, userInfo, orders, deleteProduct, dateToday, cartSum, setCartSum, success, error } = useContext(myContext)
 
     const products = [...orders].reverse()
     const navigate = useNavigate()
 
-    const notify = () =>
-        toast.success("Lorem ipsum dolor", {
-        })
 
 
     const [payment, setPayment] = useState("")
@@ -68,7 +64,7 @@ function CartPage() {
 
     const placeOrder = () => {
         if (payment === "") {
-            toast.error("Select payment method")
+            error("Select payment method")
         }
         else {
             fetch(`${url}/sales`, {
@@ -88,7 +84,7 @@ function CartPage() {
             })
                 .then(resp => resp.json())
                 .then((data) => {
-                    toast.success("Order successfully processed")
+                    success("Order successfully processed")
                     setTimeout(() => {
                         deleteOrder(data.user_id)   
                     }, 1000);

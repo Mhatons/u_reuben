@@ -10,12 +10,6 @@ function HomeSilder() {
         <div>
             <div className="home_slider">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                    {/* <div className="menu_ul">
-                        <div> <Link className="menu_list">Super deals</Link> </div>
-                        <div> <Link className="menu_list">Soft refreshments</Link> </div>
-                        <div> <Link className="menu_list">Yummy delicacies</Link> </div>
-                        <div> <Link className="menu_list">Order Now</Link> </div>
-                    </div> */}
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -31,9 +25,6 @@ function HomeSilder() {
                         <div class="carousel-item img_header">
                             <img src={slide3} class="d-block w-100" alt="..." />
                         </div>
-                        {/* <div class="carousel-item img_header">
-                            <img src={slide4} class="d-block w-100" alt="..." />
-                        </div> */}
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

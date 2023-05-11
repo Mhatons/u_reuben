@@ -13,6 +13,22 @@ import { IoLocation, IoCheckmarkCircleSharp } from "react-icons/io5"
 import { useState } from "react"
 import { toast } from "react-toastify"
 
+import sha from "../images/333163018_117208274632470_8841863388902976207_n.jpg"
+import sha2 from "../images/pngimg.com - shawarma_PNG34.png"
+import piz from "../images/pizza-5179939_1920.jpg"
+import piz2 from "../images/pizza-3010062_1920.jpg"
+import bug from "../images/burger-7831127_1920.jpg"
+import bug2 from "../images/burger-4953465_1920.jpg"
+import smo from "../images/cranberries-1334507_1920.jpg"
+import smo2 from "../images/Blackberry-smoothie.jpg"
+import chi from "../images/burger-7690927_1920.jpg"
+import chi2 from "../images/fourChips.webp"
+import chik from "../images/IMG_delicious-chicken-table-848x565.jpg"
+import chik2 from "../images/fried-chicken-4977369_1920.jpg"
+import paf from "../images/smoothie-1578240_1920.jpg"
+import paf2 from "../images/smoothie-1444351_1920.jpg"
+import FlipCards from "./Flip_cards"
+
 function Item() {
 
     const { darkbg, url, reverseProduct, reverseBranch, err, userInfo, cart, login, dateToday, setErr, orders, discount, discountRate } = useContext(myContext)
@@ -176,6 +192,58 @@ function Item() {
         })
     }
 
+     const cardItems = [
+        {
+            id: 1,
+            image1: sha,
+            image2: sha2,
+            name: "Shawarma",
+            price: 2100
+        },
+        {
+            id: 2,
+            image1: paf,
+            image2: paf2,
+            name: "Parfait",
+            price: 2100
+        },
+        {
+            id: 3,
+            image1: piz,
+            image2: piz2,
+            name: "Pizza",
+            price: 2100
+        },
+        {
+            id: 4,
+            image1: smo,
+            image2: smo2,
+            name: "Smoothie",
+            price: 2100
+        },
+        {
+            id: 4,
+            image1: chi,
+            image2: chi2,
+            name: "Chips",
+            price: 2100
+        },
+        // {
+        //     id: 4,
+        //     image1: bug,
+        //     image2: bug2,
+        //     name: "Burger",
+        //     price: 2100
+        // },
+        // {
+        //     id: 4,
+        //     image1: chik,
+        //     image2: chik2,
+        //     name: "Chicken",
+        //     price: 2100
+        // },
+    ]
+
 
 
 
@@ -333,7 +401,8 @@ function Item() {
                                 sideItems.map((data, i) => {
                                     return (
                                         <div className="check_products_items" key={i} >
-                                            <Link onClick={() => getID(data._id)}>
+                                            <Link 
+                                            onClick={() => getID(data._id)}>
                                                 <img src={`${url}/uploads/${data.image}`} alt="" />
                                             </Link>
                                             <div>From NGN {data.price}</div>
@@ -352,67 +421,20 @@ function Item() {
                     <div className="flip_header">
                         <b>More Variety for your pleasure</b>
                     </div>
-                    <div className="flip_boxes">
-                        <div className="flip_box">
-                            <div className="flip_images">
-                                <div className="flip_img1">
-                                    <img src={img1} alt="image" />
-                                </div>
-                                <div className="flip_img2">
-                                    <img src={img2} alt="image" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flip_box">
-                            <div className="flip_images">
-                                <div className="flip_img1">
-                                    <img src={img3} alt="image" />
-                                </div>
-                                <div className="flip_img2">
-                                    <img src={img4} alt="image" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flip_box box3">
-                            <div className="flip_images">
-                                <div className="flip_img1">
-                                    <img src={img5} alt="image" />
-                                </div>
-                                <div className="flip_img2">
-                                    <img src={img6} alt="image" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flip_box box4">
-                            <div className="flip_images">
-                                <div className="flip_img1">
-                                    <img src={img2} alt="image" />
-                                </div>
-                                <div className="flip_img2">
-                                    <img src={img5} alt="image" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flip_box box5">
-                            <div className="flip_images">
-                                <div className="flip_img1">
-                                    <img src={img6} alt="image" />
-                                </div>
-                                <div className="flip_img2">
-                                    <img src={img3} alt="image" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flip_box box6">
-                            <div className="flip_images">
-                                <div className="flip_img1">
-                                    <img src={img4} alt="image" />
-                                </div>
-                                <div className="flip_img2">
-                                    <img src={img2} alt="image" />
-                                </div>
-                            </div>
-                        </div>
+                    <div className="item_gallery">
+                        {
+                            cardItems.map((info) => {
+                                return(
+                                    <FlipCards
+                                    key = {info.id}
+                                    img1 = {info.image1}
+                                    img2 = {info.image2}
+                                    name = {info.name}
+                                    price = {info.price}
+                                    />
+                                )
+                            })
+                        }
                     </div>
 
                 </div>
@@ -435,15 +457,13 @@ function Item() {
                                             <div key={i} className="homeProduct_sect">
                                                 <section className="homeProduct_img">
                                                     <img src={`${url}/uploads/${data.image}`} alt="" />
-                                                    <div className="btn_shop">
+                                                    {/* <div className="btn_shop">
                                                         <Link className="btn_shop_header" to="/products" style={{ textDecoration: "none" }}><button>Shop now</button></Link>
-                                                    </div>
+                                                    </div> */}
                                                 </section>
                                                 <section className="homeProduct_txt">
                                                     <h2>{data.title}</h2>
-                                                    <p>
-                                                        First time order in our app special? <Link className="link_black">Order</Link> our most sort after Shawarma package today and get free delivery to any location of your choice.
-                                                    </p>
+                                                    <p>Order our exceptionally tasty & nutritious <span className="text-warning fst-italic">{data.title}</span> for as low as <span className=" fw-bolder text-danger">N{discount(data.price)}</span> instead of <span className="text-muted fst-italic text-decoration-line-through">N{data.price}</span> when you shop with us online</p>
                                                     <div>{data.description}</div>
                                                     <div className="homeProduct_btn">
                                                         <div><Link to="/products" ><button>See More</button></Link></div>
