@@ -18,28 +18,32 @@ function Headers() {
        quantity: 302,
        total: 43,
        amount: 76000,
-       icon: <BsFillBookmarksFill />
+       icon: <BsFillBookmarksFill />,
+       id: 1
     },
     {
        title: "Sales",
        quantity: reverseSales.length,
        total: 43,
        amount: salesTotal,
-       icon: <BsFillCartFill />
+       icon: <BsFillCartFill />,
+       id: 2
     },
     {
        title: "Products",
        quantity: reverseProduct.length,
        total: 43,
        amount: salesTotal,
-       icon: <BsFillPeopleFill />
+       icon: <BsFillPeopleFill />,
+       id: 3
     },
     {
        title: "Users",
        quantity: getStaff.length,
        total: 43,
        amount: salesTotal,
-       icon: <BsFillBagFill />
+       icon: <BsFillBagFill />,
+       id: 4
     },
 ]
 
@@ -49,7 +53,7 @@ function Headers() {
                 {
                     cardItems.map((item) => {
                         return(
-                            <div className="admin_card">
+                            <div className="admin_card" key={item.id}>
                     <div className="card_body">
                         <div className="card_title">{item.title}</div>
                         <div className="card_no">{item.quantity}</div>
@@ -65,46 +69,6 @@ function Headers() {
                         )
                     })
                 }
-                {/* <div className="admin_card">
-                    <div className="card_body">
-                        <div className="card_title">Sales</div>
-                        <div className="card_no">{reverseSales.length}</div>
-                        <div className="card_desc">
-                            <div>Total <span className="card_logs">43</span></div>
-                            <div>Amount <span className="card_logs">N{salesTotal}</span></div>
-                        </div>
-                    </div>
-                    <div className="card_img">
-                        <BsFillCartFill />
-                    </div>
-                </div>
-                <div className="admin_card">
-                    <div className="card_body">
-                        <div className="card_title">Total Users</div>
-                        <div className="card_no">{reverseUsers.length}</div>
-                        <div className="card_desc">
-                            <div>Total Staff <span className="card_logs">{getStaff.length}</span></div>
-                            <div>Total Users <span  className="card_logs">{getUsers.length}</span></div>
-                        </div>
-                    </div>
-                    <div className="card_img">
-                        <BsFillBagFill />
-                    </div>
-                </div>
-                <div className="admin_card">
-                    <div className="card_body">
-                        <div className="card_title">Products</div>
-                        <div className="card_no">{reverseProduct.length}</div>
-                        <div className="card_desc">
-                            <div>Total <span className="card_logs">43</span></div>
-                            <div>Amount <span className="card_logs">N79,000</span></div>
-                        </div>
-                    </div>
-                    <div className="card_img">
-                        <BsFillPeopleFill />
-                    </div>
-                </div> */}
-
             </div>
         </div>
     )

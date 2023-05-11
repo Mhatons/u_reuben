@@ -18,24 +18,34 @@ function AccountInfo() {
 
     return (
         <div>
-            <center className={login ? "accountInfo" : "accountInfo_null"}>
+            <center className={login ? "accountInfo" : "accountInfo"}>
                 {
-                    login && <section className="profile_bg">
+                    login && <section className="">
                         <section>
                             <div><img src={profilePics} alt="" className="profilepics" /></div>
-                            <b className="profilename">Hi, {userInfo.user_name}</b>
+                            <b className=" text-dark">Hi, {userInfo.user_name}</b>
                         </section>
-                        <section className="account_banner text-dark">
+                        <section className="account_banner  text-dark">
                             <div>
-                                <span onClick={() => navigate(`/profile/${userInfo._id}`)}> <IoPersonOutline /> </span>
+                                <span
+                                 role="button"
+                                  onClick={() => navigate(`/profile/${userInfo._id}`)}> 
+                                  <IoPersonOutline /> 
+                                </span>
                                 <p>Account</p>
                             </div>
                             <div>
-                                <span> <IoReceiptOutline /> </span>
+                                <span
+                                 role="button" onClick={() => navigate(`/cart`)}
+                                > 
+                                    <IoReceiptOutline />
+                                </span>
                                 <p>Orders</p>
                             </div>
                             <div>
-                                <span> <IoChatbubbleEllipsesOutline /> </span>
+                                <span role="button"> 
+                                <IoChatbubbleEllipsesOutline />
+                                </span>
                                 <p>Messages</p>
                             </div>
                         </section>
@@ -44,9 +54,9 @@ function AccountInfo() {
 
                 {
                     !login && <section style={{ paddingBottom: "1em" }}>
-                        <section>
-                            <div className="null_profile_pics"> <IoPersonOutline /> </div>
-                            <b className="text-dark">Welcome to UncleReuben</b>
+                        <section className="pt-4">
+                            <div className="null_profile_pics mb-4"> <IoPersonOutline /> </div>
+                            <b className="text-dark mt-3">Welcome to UncleReuben</b>
                         </section>
                         <section className="acount_no_login">
                             <div className="account_login_btn">

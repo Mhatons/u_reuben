@@ -140,7 +140,7 @@ function ManageProducts() {
                                                         {
                                                             reverseCategories.map((data) => {
                                                                 return (
-                                                                    <option value={data._id}>{data.name}</option>
+                                                                    <option key={data.id} value={data._id}>{data.name}</option>
                                                                 )
                                                             })
                                                         }
@@ -195,7 +195,7 @@ function ManageProducts() {
                                             reverseProduct.length ? (
                                                 reverseProduct.map((data) => {
                                                     return (
-                                                        <div className="item">
+                                                        <div key={data.id} className="item">
                                                             <div className="item_image">
                                                                 <img src={`${url}/uploads/${data.image}`} alt="item" />
                                                                 <div className="events_btn events_no_background">

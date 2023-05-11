@@ -20,10 +20,63 @@ import chik2 from "../images/fried-chicken-4977369_1920.jpg"
 import paf from "../images/smoothie-1578240_1920.jpg"
 import paf2 from "../images/smoothie-1444351_1920.jpg"
 import { Link } from "react-router-dom"
+import FlipCards from "../Files/Flip_cards"
 
 
 function Products() {
     const { darkbg } = useContext(myContext)
+
+    const cardItems = [
+        {
+            id: 1,
+            image1: sha,
+            image2: sha2,
+            name: "Shawarma",
+            price: 2100
+        },
+        {
+            id: 2,
+            image1: paf,
+            image2: paf2,
+            name: "Parfait",
+            price: 2100
+        },
+        {
+            id: 3,
+            image1: piz,
+            image2: piz2,
+            name: "Pizza",
+            price: 2100
+        },
+        {
+            id: 4,
+            image1: smo,
+            image2: smo2,
+            name: "Smoothie",
+            price: 2100
+        },
+        {
+            id: 4,
+            image1: chi,
+            image2: chi2,
+            name: "Chips",
+            price: 2100
+        },
+        {
+            id: 4,
+            image1: bug,
+            image2: bug2,
+            name: "Burger",
+            price: 2100
+        },
+        {
+            id: 4,
+            image1: chik,
+            image2: chik2,
+            name: "Chicken",
+            price: 2100
+        },
+    ]
     return (
         <div className="products">
             <div>
@@ -37,106 +90,23 @@ function Products() {
                                     <b className="scroll_txt pe-5">Shop for your surest: <span style={{ color: "brown" }}>Sharwama</span>, <span className="text-dark">Barbecue</span>, <span className="text-success">Pizza</span>, <span style={{ color: "blue" }}>Smoothie</span>, <span style={{ color: "brown" }}>Popcorn</span> </b>
                                 </div>
                             </div>
+
                             <div className="item_gallery">
-                                    <div className="flip_box">
-                                        <div className="flip_images item_gallery_container">
-                                            <div className="flip_img1">
-                                                <img src={sha} alt="image" />
-                                            </div>
-                                            <div className="flip_img2 image_radius">
-                                                <img src={sha2} alt="image" />
-                                            </div>
-                                        </div>
-                                        <div className="item_gallery_txt">
-                                            <span className="item_gallery_name">Sharwama</span> <div></div>
-                                            <span className="item_gallery_price">From NGN 2100</span>
-                                        </div>
-                                    </div>
-                                    <div className="flip_box">
-                                        <div className="flip_images item_gallery_container">
-                                            <div className="flip_img1">
-                                                <img src={paf} alt="image" />
-                                            </div>
-                                            <div className="flip_img2">
-                                                <img src={paf2} alt="image" />
-                                            </div>
-                                        </div>
-                                        <div className="item_gallery_txt">
-                                            <span className="item_gallery_name">Parfait</span> <div></div>
-                                            <span className="item_gallery_price">From NGN 2100</span>
-                                        </div>
-                                    </div>
-                                    <div className="flip_box">
-                                        <div className="flip_images item_gallery_container">
-                                            <div className="flip_img1">
-                                                <img src={piz} alt="image" />
-                                            </div>
-                                            <div className="flip_img2">
-                                                <img src={piz2} alt="image" />
-                                            </div>
-                                        </div>
-                                        <div className="item_gallery_txt">
-                                            <span className="item_gallery_name">Pizza</span> <div></div>
-                                            <span className="item_gallery_price">From NGN 6100</span>
-                                        </div>
-                                    </div>
-                                    <div className="flip_box">
-                                        <div className="flip_images item_gallery_container">
-                                            <div className="flip_img1">
-                                                <img src={smo} alt="image" />
-                                            </div>
-                                            <div className="flip_img2">
-                                                <img src={smo2} alt="image" />
-                                            </div>
-                                        </div>
-                                        <div className="item_gallery_txt">
-                                            <span className="item_gallery_name">Smoothie</span> <div></div>
-                                            <span className="item_gallery_price">From NGN 900</span>
-                                        </div>
-                                    </div>
-                                    <div className="flip_box">
-                                        <div className="flip_images item_gallery_container">
-                                            <div className="flip_img1">
-                                                <img src={chi} alt="image" />
-                                            </div>
-                                            <div className="flip_img2">
-                                                <img src={chi2} alt="image" />
-                                            </div>
-                                        </div>
-                                        <div className="item_gallery_txt">
-                                            <span className="item_gallery_name">Chips</span> <div></div>
-                                            <span className="item_gallery_price">From NGN 1200</span>
-                                        </div>
-                                    </div>
-                                    <div className="flip_box">
-                                        <div className="flip_images item_gallery_container">
-                                            <div className="flip_img1">
-                                                <img src={bug} alt="image" />
-                                            </div>
-                                            <div className="flip_img2">
-                                                <img src={bug2} alt="image" />
-                                            </div>
-                                        </div>
-                                        <div className="item_gallery_txt">
-                                            <span className="item_gallery_name">Burger</span> <div></div>
-                                            <span className="item_gallery_price">From NGN 2900</span>
-                                        </div>
-                                    </div>
-                                    <div className="flip_box">
-                                        <div className="flip_images item_gallery_container">
-                                            <div className="flip_img1">
-                                                <img src={chik} alt="image" />
-                                            </div>
-                                            <div className="flip_img2">
-                                                <img src={chik2} alt="image" />
-                                            </div>
-                                        </div>
-                                        <div className="item_gallery_txt">
-                                            <span className="item_gallery_name">Chicken</span> <div></div>
-                                            <span className="item_gallery_price">From NGN 2900</span>
-                                        </div>
-                                    </div>
+                                {
+                                    cardItems.map((info) => {
+                                        return(
+                                            <FlipCards
+                                            key = {info.id}
+                                            img1 = {info.image1}
+                                            img2 = {info.image2}
+                                            name = {info.name}
+                                            price = {info.price}
+                                            />
+                                        )
+                                    })
+                                }
                             </div>
+
                         </div>
                     </div>
                 </section>
