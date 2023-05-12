@@ -2,7 +2,7 @@ import React from 'react';
 import { FlutterWaveButton, closePaymentModal } from 'flutterwave-react-v3';
 import { useContext } from 'react';
 import { myContext } from '../../myContext';
-
+import img from "../images/logo_no_bg.png"
 
 export default function App() {
   const {userInfo, logo, cartSum} = useContext(myContext)
@@ -20,13 +20,13 @@ export default function App() {
     customizations: {
       title: 'UncleReuben Grills',
       description: 'Payment for items in cart',
-      logo: 'https://drive.google.com/file/d/1fOdxxk170Bmv33iik8QoRttEsJ6hgmKz/view',
+      logo: <img src={img} alt='logo' />,
     },
   };
 
   const fwConfig = {
     ...config,
-    text: 'Pay Now!',
+    text: 'Checkout',
     callback: (response) => {
        console.log(response);
       closePaymentModal() // this will close the modal programmatically

@@ -100,9 +100,7 @@
 .nav_center{
   width: 50%; margin: auto; display: flex; flex-direction: column; margin-left: 15%;
 }
-.profile_img img{
-  width: 3vw; border-radius: 50%; margin-right: 10px;
-}
+
 .point{
   cursor: pointer;
 }
@@ -1093,56 +1091,44 @@
 
 
 /* PROFILE PAGE */
-.details_bg{
-  padding: 5em 0em 20em;
+.profile_intro{
+  background-color: #0f172ad3; position: absolute; inset: 0; color: white; display: flex; justify-content: center; flex-direction: column;
 }
-.details_header{
-  background-image: url(../src/Components/images/146-1468584_animated-clouds-png-clouds-background.png);
-  height: 300px; position: fixed; top: 0; width: 100%; z-index: -1;
+.details_container{
+  background-color: #f5f5f5; border-radius: 6px;  color: #424242; font-size: 13px; font-weight: 550; overflow-y: scroll;height: 23em; 
 }
-.mydetails{
-  width: 100%; justify-content: space-between; display: flex;
-  padding: 3em 1em 0em 4em;
+.details_container::-webkit-scrollbar{
+  display: none;
 }
-.my_profile_details{
-  position: fixed; width: 24%; text-align: center;
+.details_body{
+  position: absolute; width: 100%; top: 25em; padding: 0em 2em ; 
 }
-.myprofile_img img{
-  width: 80%; object-fit: contain; border-radius: 50%; object-position: center; margin: auto;
+.profile_header{
+  display: flex; justify-content: space-between; align-items: center; border-top-left-radius: 4px;border-top-right-radius: 4px; background-color: white; padding: 0.5em 2em;
 }
-.mydetails_sect{
-  width: 72%;
-  
+.person_details{
+  box-shadow: 0px 0px 10px 1px silver; padding: 0.7em 1em; background-color: white; border-radius: 4px; width: 100%;
 }
-.profile_menu{
-  display: flex; justify-content: space-between; align-items: center; background-color: black; color: #888686; padding: 1em 0.5em; font-weight: 600;
-  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+.profile_details{
+  padding: 1em 2em;
+}
+.details_holder{
+  padding-top: 3em; width: 95%; margin: auto; 
+}
+.profile_input{
+  border: none; outline: none; width: 100%;
+}
+.profile_logs{
+  display: flex;  padding: 0em 2em; justify-content: space-between; align-items: right;   width: 90%; position: absolute; bottom: 3em;
+}
+.profile_image{
+  position: absolute; bottom: 14em ; width: 40%; right: 30%;
+}
+.profile_image img{
+  width: 100%; object-fit: cover; object-position: top; border-radius: 50%;
+  height: 22vh;
 }
 
-.detail_container{
-  box-shadow: 1px 1px 10px 2px silver; margin: 1em 0em; padding: 1em; 
-}
-.detail_holder_female{
-  box-shadow: 1px 1px 10px 2px pink; padding: 0em 1em 0.5em; text-align: left;
-}
-.detail_holder_male{
-  box-shadow: 1px 1px 10px 0px #0752e8; padding:  0em 1em 0.5em ; text-align: left;
-}
-.detail_holder_female div{
-  border-bottom: 2px solid pink; padding: 0.5em 0em;
-}
-.detail_holder_male div{
-  border-bottom: 1px solid #0752e8; padding: 0.3em 0em;
-}
-.my_profile_cart_bg{
-  width: 80%; margin: auto;
-}
-.detail_holder{
-  border: 1px solid gray; padding: 0em 1em 0.5em; text-align: left;
-}
-.detail_holder div{
-  border-bottom: 1px solid gray; padding: 0.3em 0em;
-}
 
 
 
@@ -1233,9 +1219,6 @@
   .unmedia_profile{
     display: none;
   }
-  .profile_img img{
-    width: 5vw;
-  }
   .categoty_ul, .category_hd, .accountInfo, .accountInfo_null{
     display: none;
   }
@@ -1272,9 +1255,6 @@
   }
   .cart_item_img img{
     max-height: 100%
-  }
-  .myprofile_img img{
-    height: 200px;
   }
   .product_discount{
     display: none;
@@ -1322,6 +1302,12 @@
   
 }
 
+@media(max-width: 767px){
+  .details_body{
+    display: flex; flex-direction: column-reverse;
+  }
+}
+
 @media(max-width: 700px){
   .menu_list{
     display: none;
@@ -1337,24 +1323,6 @@
   }
   .items{
     width: 100%;
-  }
-  .mydetails{
-    flex-direction: column; width: 80%; margin: auto; padding: 0em;
-  }
-  .my_profile_details{
-    position: relative; width: 100%;
-  }
-  .mydetails_sect, .my_profile_cart_bg{
-    width: 100%;
-  }
-  .myprofile_img img{
-    height: auto;
-  }
-  .my_empty_cart{
-    width: 80%;
-  }
-  .my_empty_cart img{
-    width: 80%;
   }
 }
 
@@ -1439,9 +1407,17 @@
 }
 
 @media(max-width: 500px){
-  .profile_img img{
-    width: 6vw;
+
+  .details_holder{
+    width: 100%;
   }
+  .profile_details{
+    padding: 0px;
+  }
+  .profile_details header{
+    padding-left: 10px;
+  }
+ 
   .logo img{
     width: 9vw;
   }

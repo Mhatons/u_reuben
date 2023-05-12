@@ -49,7 +49,7 @@ function Items() {
                         reverseProduct.length ? (
                             reverseProduct.map((data) => {
                                 return (
-                                    <div onClick={() => { navigate(`/product/${data._id}`); toTopPage() }} className={grid ? "item" : "item item_padding"}>
+                                    <div key={data.id} onClick={() => { navigate(`/product/${data._id}`); toTopPage() }} className={grid ? "item" : "item item_padding"}>
                                         <div className={grid ? "item_image " : "item_image_overflow"}>
                                             <img src={`${url}/uploads/${data.image}`} alt="item" />
                                             <div className="toCart"> <IoHeartSharp /> </div>
