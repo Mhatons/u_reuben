@@ -9,8 +9,8 @@ function Profile(){
     return(
         <div>
             <div>
-                <Nav />
-                <Nav2 />
+                {/* <Nav />
+                <Nav2 /> */}
                 <ProfileDetails />
             </div>
         </div>

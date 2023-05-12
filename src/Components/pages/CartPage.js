@@ -1,25 +1,24 @@
 import Footer from "../Files/Footer"
 import Nav2 from "../Files/Nav2"
 
-// import { ToastContainer, toast } from "react-toastify"
 import Usefluter from '../Files/Flutter'
 
 
-import { IoTrashSharp, IoInvertMode } from "react-icons/io5"
+import { IoTrashSharp } from "react-icons/io5"
 import Nav from "../Files/Nav"
 import wave from "../images/wave.png"
 import no_cart from "../images/EleOsAnim.webp"
 import logo from "../images/Logo UncleReuben.png"
 import { useContext } from "react"
 import { myContext } from "../../myContext"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
 import Button from "../Button"
 
 function CartPage() {
 
-    const { login, setLogin, profilePics, cart, darkbg, setDarkbg, url, userInfo, orders, deleteProduct, dateToday, cartSum, setCartSum, success, error } = useContext(myContext)
+    const { darkbg, url, userInfo, orders, deleteProduct, dateToday, cartSum, setCartSum, success, error, spin } = useContext(myContext)
 
     const products = [...orders].reverse()
     const navigate = useNavigate()
@@ -31,7 +30,9 @@ function CartPage() {
     function getTotal() {
         let sum = 0
         products.map((data) => {
-            sum += parseInt(data.amount)
+            return(
+                sum += parseInt(data.amount)
+            )
         })
         return sum
     }
@@ -39,7 +40,9 @@ function CartPage() {
     function getTotalDelivery() {
         let sum = 0
         products.map((data) => {
-            sum += parseInt(data.delivery_fee)
+            return(
+                sum += parseInt(data.delivery_fee)
+            )
         })
         return sum
     }
@@ -194,7 +197,12 @@ function CartPage() {
                                                 {
                                                     payment === "pay_now" ? (
                                                         <div><Usefluter /></div>
-                                                    ): <Button fn={placeOrder} text='Place Order!' styles='cartBtn' />
+                                                    ): <Button 
+                                                    fn={placeOrder} 
+                                                    text='Checkout' 
+                                                    styles='cartBtn'
+                                                    spin={<img src={spin} alt="loading..." className="spin" />}
+                                                    />
                                                 }
                                             </div>
                                             <div className="txt_sm">Upon clicking 'Place Order', I confirm I have read and acknowledged all terms and policies.</div>
