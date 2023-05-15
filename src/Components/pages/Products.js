@@ -56,21 +56,21 @@ function Products() {
             price: 2100
         },
         {
-            id: 4,
+            id: 5,
             image1: chi,
             image2: chi2,
             name: "Chips",
             price: 2100
         },
         {
-            id: 4,
+            id: 6,
             image1: bug,
             image2: bug2,
             name: "Burger",
             price: 2100
         },
         {
-            id: 4,
+            id: 7,
             image1: chik,
             image2: chik2,
             name: "Chicken",
@@ -93,10 +93,10 @@ function Products() {
 
                             <div className="item_gallery">
                                 {
-                                    cardItems.map((info) => {
+                                    cardItems.map((info, i) => {
                                         return(
                                             <FlipCards
-                                            key = {info.id}
+                                            key = {i}
                                             img1 = {info.image1}
                                             img2 = {info.image2}
                                             name = {info.name}

@@ -7,6 +7,7 @@ import Admin_nav from "../Files/Admin_nav"
 import SideBar from "../Files/SideBar"
 import { myContext } from "../../../myContext"
 import { useState } from "react"
+import {Image} from "cloudinary-react"
 
 function ManageProducts() {
 
@@ -197,7 +198,8 @@ function ManageProducts() {
                                                     return (
                                                         <div key={data.id} className="item">
                                                             <div className="item_image">
-                                                                <img src={`${url}/uploads/${data.image}`} alt="item" />
+                                                                <Image cloudName="dy4nvvdwd" publicId={data.image} />
+                                                                {/* <img src={`${url}/uploads/${data.image}`} alt="item" /> */}
                                                                 <div className="events_btn events_no_background">
                                                                     <Link onClick={() => deleteProduct(data._id)} className="text-danger"><IoTrashSharp /></Link>
                                                                     <Link onClick={() => { setModal(true); setUpdateModal(true); findProduct(data._id) }} className="text-light" ><IoCreate /></Link>

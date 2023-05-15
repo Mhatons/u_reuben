@@ -73,7 +73,7 @@ function Nav() {
                         </div>
                     </div>
 
-                    <div class={!darkbg ? "offcanvas offcanvas-start" : "offcanvas offcanvas-start darkMode"} tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class={!darkbg ? "offcanvas offcanvas-start" : "offcanvas offcanvas-start darkMode"} tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                         <div class="offcanvas-header">
                             {
                                 login && <div className="nav-item dropdown">
@@ -106,7 +106,7 @@ function Nav() {
                                 {
                                     reverseCategories.map((data, i) => {
                                         return (
-                                            <Link className={!darkbg ? "categoty_li dropdown-item" : "categoty_li dropdown-item text-light"}>{i + 1} <span className="ps-5 pe-5">{data.name}</span></Link>
+                                            <Link key={i} className={!darkbg ? "categoty_li dropdown-item" : "categoty_li dropdown-item text-light"}>{i + 1} <span className="ps-5 pe-5">{data.name}</span></Link>
                                         )
                                     })
                                 }

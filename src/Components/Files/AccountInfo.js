@@ -13,7 +13,7 @@ import delivery from "../images/delivery-guy-1424808-removebg-preview.png"
 import { Link, useNavigate } from "react-router-dom"
 
 function AccountInfo() {
-    const { profilePics, login, setLogin, userInfo, url, darkbg } = useContext(myContext)
+    const { profilePics, login, setLogin, userInfo, url, darkbg, } = useContext(myContext)
     const navigate = useNavigate()
 
     return (
@@ -21,8 +21,24 @@ function AccountInfo() {
             <center className={login ? "accountInfo" : "accountInfo"}>
                 {
                     login && <section className="">
-                        <section>
-                            <div><img src={profilePics} alt="" className="profilepics" /></div>
+                        <section className={profilePics ? "pt-3 pb-2": null}>
+                            {
+                                !userInfo.image ? 
+                                <div style={{
+                                fontSize: "2em",
+                                backgroundColor: "#f5f5f5",
+                                borderRadius: "50%",
+                                width: "25%",
+                                color: "#424242",
+                                paddingBottom: "7px",
+                                }}> 
+                                <IoPersonOutline /> 
+                            </div>: <div 
+                                className="hel">
+                                    {profilePics}
+                                </div>
+                            }
+                            
                             <b className=" text-dark">Hi, {userInfo.user_name}</b>
                         </section>
                         <section className="account_banner  text-dark">
@@ -58,14 +74,17 @@ function AccountInfo() {
                             <div className="null_profile_pics mb-4"> <IoPersonOutline /> </div>
                             <b className="text-dark mt-3">Welcome to UncleReuben</b>
                         </section>
-                        <section className="acount_no_login">
-                            <div className="account_login_btn">
-                                <Link to='/reg'><button className="btn_reg">Register</button></Link>
-                            </div>
-                            <div className="account_login_btn">
-                                <Link to="/signin" ><button className="btn_sign">sign in</button></Link>
-                            </div>
-                        </section>
+                        {
+                            !login && 
+                            <section className="acount_no_login">
+                                <div className="account_login_btn">
+                                    <Link to='/reg'><button className="btn_reg">Register</button></Link>
+                                </div>
+                                <div className="account_login_btn">
+                                    <Link to="/signin" ><button className="btn_sign">sign in</button></Link>
+                                </div>
+                            </section>
+                        }
                     </section>
                 }
                 <section className="account_banner_slider">

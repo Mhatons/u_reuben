@@ -6,6 +6,8 @@ import spin from "./Components/images/spin.gif"
 import spinner from "./Components/images/loader.gif"
 import { HiMoon, HiSun } from "react-icons/hi2"
 import { toast } from "react-toastify"
+import {Image} from "cloudinary-react"
+
 
 export const myContext = createContext()
 
@@ -249,7 +251,10 @@ function PostProvider({ children }) {
     const [userInfo, setUserInfo] = useState({})
     const url = "https://unclereuben.onrender.com"
 
-    const profilePics = `${url}/uploads/${userInfo.image}`
+    // const profilePics = `${url}/uploads/${userInfo.image}`
+    const profilePics = <div className="profilepics">
+        <Image cloudName="dy4nvvdwd" publicId={userInfo.image} />
+    </div>
 
     const [orders, setOrders] = useState([])
 
@@ -286,6 +291,8 @@ function PostProvider({ children }) {
     const [showModal, setShowModal] = useState(false)
     const [otpCode, setOtpCode] = useState("")
     const [btnSpinner, setBtnSpinner] = useState(false)
+    const [awaitLogin, setAwaitLogin] = useState(false)
+
   
 
 
@@ -378,6 +385,8 @@ function PostProvider({ children }) {
         spinner,
         btnSpinner,
         setBtnSpinner,
+        awaitLogin,
+        setAwaitLogin,
 
         userInfo,
         setUserInfo,

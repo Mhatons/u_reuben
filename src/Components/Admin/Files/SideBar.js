@@ -57,7 +57,8 @@ function SideBar() {
             <div className="sidebar">
                 <Link to="/admin" style={{textDecoration: "none"}}><div className="sidebar_header">Dashboard</div></Link>
                 <div className="sidebar_user">
-                    <Link to={`/profile/${userInfo._id}`}><img src={profilePics} alt="logo" /></Link>
+                    <Link to={`/profile/${userInfo._id}`}>{profilePics}</Link>
+                    {/* <Link to={`/profile/${userInfo._id}`}><img src={profilePics} alt="logo" /></Link> */}
                     <div>{userInfo.user_name}</div>
                 </div>
 

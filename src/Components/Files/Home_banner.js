@@ -53,9 +53,9 @@ function Home_banner() {
                         <div>
                             {
                                 sliceProduct.length ? (
-                                    sliceProduct.map((data) => {
+                                    sliceProduct.map((data, i) => {
                                         return (
-                                            <div className="homeProduct_sect" key={data.id}>
+                                            <div className="homeProduct_sect" key={i}>
                                                 <section className="homeProduct_img">
                                                     <img src={`${url}/uploads/${data.image}`}  alt="" />
                                                 </section>
