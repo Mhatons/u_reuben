@@ -64,9 +64,10 @@ function SideBar() {
 
                 <div className="sidebar_contents ">
                     {
-                        sideItems.map((items) => {
+                        sideItems.map((items, i) => {
                             return(
                                 <div 
+                                key={i}
                                 onClick={items.onClick}
                                 className="sidebar_content point"> 
                                 <span>{items.icon}</span> 

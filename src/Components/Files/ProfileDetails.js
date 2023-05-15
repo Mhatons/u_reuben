@@ -7,37 +7,51 @@ import {IoPersonOutline} from "react-icons/io5"
 import { Image } from "cloudinary-react"
 
 import Axios from 'axios'
+import { useRef } from "react"
 
 
 function ProfileDetails() {
-    const { userInfo, orders, darkbg, url, logo, dateToday } = useContext(myContext)
+    const { userInfo, orders, darkbg, url, logo, dateToday, awaitLogin, spinner, setAwaitLogin, setOrders } = useContext(myContext)
     const [edit, setEdit] = useState(false)
     const [showImage, setShowImage] = useState(false)
 
-    const [phone, setPhone] = useState("")
-    const [name, setName] = useState("")
-    const [address, setAddress] = useState("")
+    const [pendingOrder, setPendingOrders] = useState()
 
-    const [details, setDetails] = useState({})
+
+    let [details, setDetails] = useState({})
     const [uploadedImage, setUploadedImage] = useState()
 
     const navigate = useNavigate()
 
     const { id } = useParams()
-
-    //    let myImage = URL.createObjectURL(userInfo.image)
-
-    {/* <input type="file" onChange={(e)=> {setImage(URL.createObjectURL(e.target.files[0])); }} />
-                            <img src={image} alt="" /> */}
+    // const userdata = useRef()
 
     useEffect(() => {
-        fetch(`${url}/users/${id}`)
-            .then(resp => resp.json())
-            .then((data) => {
-                setDetails(data)
+        Axios.get(`${url}/users/${id}`)
+        .then(response => {
+                setDetails(response.data)
             })
-            
+
+            fetch(`${url}/orders/mine/${id}`)
+            .then((resp) => resp.json())
+            .then((data) => {
+                if (data) {
+                    setPendingOrders(data.length)
+                }
+            })
+        // fetch(`${url}/users/${id}`)
+        //     .then(resp => resp.json())
+        //     .then((data) => {
+        //         setDetails(data)
+        //         userdata.current = data
+        //     })
+
     }, [details])
+
+
+    const [phone, setPhone] = useState("")
+    const [name, setName] = useState("")
+    const [address, setAddress] = useState("")
 
     const noEditDetails = [
         {
@@ -68,7 +82,8 @@ function ProfileDetails() {
             title: "Full name(s)",
             value: details.user_name,
             fn: (e) => setName(e.target.value),
-            disabled: false
+            disabled: false,
+            type: "text"
         },
         {
             id: 1,
@@ -81,14 +96,16 @@ function ProfileDetails() {
             title: "Phone",
             value: details.phone,
             fn: (e) => setPhone(e.target.value),
-            disabled: false
+            disabled: false,
+            type: "number"
         },
         {
             id: 1,
             title: "Address",
             value: details.address,
             fn: (e) => setAddress(e.target.value),
-            disabled: false
+            disabled: false,
+            type: "text"
         }
     ]
 
@@ -105,6 +122,7 @@ function ProfileDetails() {
     myForm.append("id", details._id)
 
     function editImage(){
+        setAwaitLogin(true)
 
         // Axios.put(`${url}/users`, myForm)
         //     .then((resp) => {
@@ -120,6 +138,8 @@ function ProfileDetails() {
                 if(userInfo._id === details._id){
                     localStorage.setItem("user", JSON.stringify(data))
                 }
+                setAwaitLogin(false)
+                setShowImage(false)
             })
     }
 
@@ -136,6 +156,7 @@ function ProfileDetails() {
     }
 
 
+
     const newForm = new FormData()
     newForm.append("user_name", name)
     newForm.append("address", address)
@@ -149,16 +170,17 @@ function ProfileDetails() {
     newForm.append("id", details._id)
 
     const handleChange = () => {
+        setAwaitLogin(true)
         fetch(`${url}/users`, {
             method: "PUT",
             body: newForm
         })
             .then((resp) => resp.json())
             .then((data) => {
-                console.log(data)
                 if(userInfo._id === details._id){
                     localStorage.setItem("user", JSON.stringify(data))
                 }
+                setAwaitLogin(false)
             })
     }
 
@@ -166,6 +188,15 @@ function ProfileDetails() {
 
     return (
         <div>
+            {
+                awaitLogin && 
+                    <div 
+                        id="awaitlogin">
+                        <img src={spinner} 
+                        alt="spinner" 
+                        className="spinner" />
+                    </div>
+            }
             <div 
             className="profile_bg"
             style={{
@@ -229,7 +260,7 @@ function ProfileDetails() {
                                                     <div>{info.title}</div>
                                                     <input 
                                                     className="profile_input person_details"
-                                                    type="text" 
+                                                    type={info.type} 
                                                     placeholder={info.value}
                                                     onChange={info.fn}
                                                     disabled = {info.disabled}
@@ -301,7 +332,7 @@ function ProfileDetails() {
                                 <div 
                                     className="profile_logs text-center">
                                     <div>
-                                        <b>{orders.length}</b>
+                                        <b>{pendingOrder}</b>
                                         <p>Pending orders</p>
                                     </div>
                                     <div>
