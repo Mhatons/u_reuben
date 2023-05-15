@@ -180,12 +180,12 @@
   color: #ff8102;
 }
 
-.profilepics{
-  width: 50px; border-radius: 50%; margin-top: 1em;
+.profilepics img{
+  width: 60px; border-radius: 50%; margin-top: 1em; overflow: auto;
 }
 .null_profile_pics{
   font-size: 2em; background-color: #f5f5f5; border-radius: 50%; width: 20%; color: #424242; padding-bottom: 7px;
-  
+
 }
 
 .account_banner{
@@ -996,6 +996,9 @@
   width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 0.6em; margin-bottom: 0.7em; font-family: montserrat;
   color: white;  font-size: 15px; text-align: left;  color: #424242;
 }
+#awaitlogin{
+  position: absolute; inset: 0; background-color: #1e293baa; z-index: 2;
+}
 .reg_select select{
   width: 100%; border: 1px solid gray; outline: none; background-color: transparent; border-radius: 4px; padding: 0.6em !important; margin-bottom: 0.7em; font-family: montserrat;
   color: white; font-size: 15px !important; text-align: left !important;
@@ -1141,8 +1144,15 @@
 .profile_edit_btn{
   position: sticky; top: 0em; z-index: 1;
 }
-/* .details_stopper{
-  position: sticky; top: 3em;
+#change_img{
+  display: none;
+}
+#img_btn{
+  position: absolute; bottom: 0.5em; color: white; background-color: #00000079; width: 100%; text-align: center; padding: 0.2em 0em;
+  border: 1px solid;
+}
+/* .profile_image:hover #img_btn{
+  visibility: visible;
 } */
 
 

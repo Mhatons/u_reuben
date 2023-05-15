@@ -116,7 +116,7 @@ function Signin() {
             <div className="modal_bg1">
 
                 <div className="modal_bg">
-                    <div className={`my_modal sign_modal modal_dark_txt h-50 ${darkbg ? "my_modal_dark": null}`}>
+                    <div style={{height: "55vh"}} className={`my_modal sign_modal modal_dark_txt ${darkbg ? "my_modal_dark": null}`}>
                     {/* <div className={!darkbg ? "my_modal sign_modal modal_dark_txt" : "my_modal my_modal_dark sign_modal"}> */}
                         <div className="my_modal_details pt-4">
                             <h4>Sign In</h4>

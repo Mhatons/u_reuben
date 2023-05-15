@@ -4,11 +4,12 @@ import { IoCloseSharp } from "react-icons/io5"
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useRef } from "react";
+import axios from "axios";
 
 const VerifyModal = ({fun}) => {
     const [otp, setOtp] = useState(new Array(6).fill(""))
     const code = useRef("")
-    const { setShowModal, darkbg, otpCode, url, dateToday, logo, resendOtp, setOtpCode, setLogin, setAdminLogin, success, error } = useContext(myContext)
+    const { setShowModal, darkbg, otpCode, url, dateToday, logo, resendOtp, setOtpCode, setLogin, setAdminLogin, success, error, setAwaitLogin } = useContext(myContext)
     const navigate = useNavigate()
 
     function handleChange(e, index) {
@@ -54,34 +55,28 @@ function handlePaste(e){
 // console.log(e.clipboardData.getData("text"))
 }
 
+    const myForm = new FormData()
+    myForm.append("email", otpCode.email)
+    myForm.append("password", otpCode.password)
+    myForm.append("emp_date", dateToday())
+    myForm.append("role_id", "63b5786af12ca3d559688b2b")
+    myForm.append("verified_at", "verified")
+    myForm.append("id", otpCode._id)
+
 
     const verifyUser = (e) => { 
         console.log(otpCode)
         if (e.length === 6 && e === otpCode.current_verification) {
 
             fetch(`${url}/users`, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    "user_name": otpCode.user_name,
-                    "address": otpCode.address,
-                    "email": otpCode.email,
-                    "phone": otpCode.phone,
-                    "password": otpCode.password,
-                    "gender": otpCode.gender,
-                    "emp_date": dateToday(),
-                    "role_id": "63b5786af12ca3d559688b2b",
-                    "image": otpCode.image,
-                    "verified_at": "verified",
-                    "id": otpCode._id,
-                })
-
+            method: "PUT",
+            body: myForm
             })
                 .then(resp => resp.json())
                 .then((data) => {
                     console.log(data)
                     setOtpCode("")
-
+                        setAwaitLogin(false)
                      success("Login successful")
                             setLogin(true)
                             console.log(data.user)
@@ -101,9 +96,7 @@ function handlePaste(e){
                 })
             success("verification successful!")
             setShowModal(false)
-            setTimeout(() => {
-                navigate("/signin")
-            }, 1000);
+            setAwaitLogin(true)
         }
         else if (e.length === 6 && e !== otpCode.current_verification) {
             error("wrong verification code!")

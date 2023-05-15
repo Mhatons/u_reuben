@@ -1,8 +1,9 @@
 import { useContext, useState } from "react"
 import { IoTrashSharp, IoCreate, IoCloseSharp, IoGrid } from "react-icons/io5"
 import { BsFillGrid1X2Fill } from "react-icons/bs"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { myContext } from "../../../myContext"
+import {Image} from "cloudinary-react"
 
 import Admin_nav from "../Files/Admin_nav"
 import SideBar from "../Files/SideBar"
@@ -12,6 +13,7 @@ import { formatDistance, subDays } from 'date-fns'
 // formatDistance(subDays(new Date(), 3), new Date(), { addSuffix: true })
 
 function ManageStaff() {
+    const navigate = useNavigate()
 
     const { darkbg, modal, setModal, updateModal, setUpdateModal, deleteStaff, reverseUsers, url, spinner, err, setErr, reverseBranch, reverseRoles, dateToday, grid, setGrid } = useContext(myContext)
 
@@ -249,11 +251,13 @@ function ManageStaff() {
 
                                             {
                                                 getStaff.length ? (
-                                                    getStaff.map((data) => {
+                                                    getStaff.map((data, i) => {
                                                         return (
-                                                            <div className="item">
+                                                            <div key={i} className="item">
                                                                 <div className="item_image">
-                                                                    <img src={`${url}/uploads/${data.image}`} alt="item" />
+                                                                    <div onClick={() => navigate(`/profile/${data._id}`)}>
+                                                                    <Image cloudName="dy4nvvdwd" publicId={ data.image} />
+                                                                    </div>
                                                                     <div className="events_btn events_no_background">
                                                                         <Link onClick={() => deleteStaff(data._id)} className="text-danger"><IoTrashSharp /></Link>
                                                                         <Link onClick={() => { setModal(true); setUpdateModal(true); findUser(data._id) }} className="text-light" ><IoCreate /></Link>

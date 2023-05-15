@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom"
 import Admin_nav from "../Files/Admin_nav"
 import SideBar from "../Files/SideBar"
 import { myContext } from "../../../myContext"
+import {Image} from "cloudinary-react"
 
 function Customers() {
 
@@ -19,7 +20,7 @@ function Customers() {
     const getUsers = reverseUsers.filter(allusers => allusers.role_id === "63b5786af12ca3d559688b2b")
 
     const createUser = () => {
-        if (user.user_name === "" || user.address === "" || user.email === "" || user.phone === "" || user.image === "" || user.password === "" || user.gender === "") {
+        if (user.user_name === "" || user.address === "" || user.email === "" || user.phone === "" || user.password === "" ) {
             setErr(true)
         }
         else {
@@ -45,6 +46,7 @@ function Customers() {
     myForm.append("role_id", "63b5786af12ca3d559688b2b")
     myForm.append("image", user.image)
     myForm.append("verified_at", "verified")
+    myForm.append("id", userID._id)
 
 
     function findUser(id) {
@@ -55,33 +57,22 @@ function Customers() {
             })
     }
 
-    function updateUser() {
-        if (user.user_name === "" || user.address === "" || user.email === "" || user.phone === "" || user.image === "" || user.branch_id === "" || user.password === "" || user.salary === "" || user.gender === "") {
-            setErr(true)
-        }
-        else {
-            fetch(`${url}/users`, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    "user_name": user.user_name,
-                    "address": user.address,
-                    "email": user.email,
-                    "phone": user.phone,
-                    "password": user.password,
-                    "gender": user.gender,
-                    "emp_date": dateToday(),
-                    "role_id": "63b5786af12ca3d559688b2b",
-                    "id": userID._id,
-                    "image": user.image,
-                })
-            })
-                .then((resp) => resp.json())
-                .then((data) => {
-                    console.log(data)
-                })
-        }
-    }
+    // function updateUser() {
+    //     if (user.user_name === "" || user.address === "" || user.email === "" || user.phone === "" || user.image === "" || user.branch_id === "" || user.password === "" || user.salary === "" || user.gender === "") {
+    //         setErr(true)
+    //     }
+    //     else {
+    //         fetch(`${url}/users`, {
+    //             method: "PUT",
+    //             // headers: { "Content-Type": "application/json" },
+    //             body: myForm
+    //         })
+    //             .then((resp) => resp.json())
+    //             .then((data) => {
+    //                 console.log(data)
+    //             })
+    //     }
+    // }
 
     return (
         <div>
@@ -108,12 +99,7 @@ function Customers() {
                                 <div className={!darkbg ? "admin_mode" : "admin_mode admin_mode_dark"}>
                                     <div onClick={() => setModal(false)} className="modal_close"><IoCloseSharp /></div>
                                     <div className="my_modal_details">
-                                        {
-                                            !updateModal && <h4>Create User</h4>
-                                        }
-                                        {
-                                            updateModal && <h4>Update User</h4>
-                                        }
+                                       <h4>Create User</h4>
                                         <div className="my_modal_links">
                                         </div>
                                         <div className="pt-3">
@@ -132,7 +118,7 @@ function Customers() {
                                                     </div>
                                                     <div>
                                                         <div>Password</div>
-                                                        <input type="password" minLength="6" name="password" className={err && user.password === "" ? "err" : null} value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                                                        <input type="password" maxLength={8} minLength={6} name="password" className={err && user.password === "" ? "err" : null} value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
                                                     </div>
                                                 </div>
 
@@ -141,7 +127,7 @@ function Customers() {
 
 
 
-                                                <div>
+                                                {/* <div>
                                                     <div>
                                                         <div>Gender</div>
                                                         <select name="gender" className={err && user.gender === "" ? "err" : null} value={user.gender} onChange={(e) => setUser({ ...user, gender: e.target.value })}>
@@ -156,14 +142,14 @@ function Customers() {
                                                             <option value="others">Prefer not to say</option>
                                                         </select>
                                                     </div>
-                                                </div>
+                                                </div> */}
 
-                                                <div>
+                                                {/* <div>
                                                     <div>
                                                         <div>Profile photo</div>
                                                         <input type="file" name="image" className={err && user.image === "" ? "err" : "image_color"} onChange={(e) => setUser({ ...user, image: e.target.files[0] })} />
                                                     </div>
-                                                </div>
+                                                </div> */}
 
                                             </form>
 
@@ -171,9 +157,6 @@ function Customers() {
 
                                                 {
                                                     !updateModal && <button onClick={() => createUser()}>Create User</button>
-                                                }
-                                                {
-                                                    updateModal && <button onClick={() => updateUser()}>Update User</button>
                                                 }
                                             </div>
                                         </div>
@@ -208,19 +191,23 @@ function Customers() {
 
                                         {
                                             getUsers.length ? (
-                                                getUsers.map((data) => {
+                                                getUsers.map((data, i) => {
                                                     return (
-                                                        <div className="item">
+                                                        <div
+                                                        key={i} 
+                                                        className="item">
                                                             <div className="item_image">
-                                                                <div onClick={() => navigate(`/profile/${data._id}`)}><img src={`${url}/uploads/${data.image}`} alt="item" /></div>
+                                                                <div onClick={() => navigate(`/profile/${data._id}`)}>
+                                                                    <Image cloudName="dy4nvvdwd" publicId={ data.image} />
+                                                                </div>
                                                                 <div className="events_btn events_no_background">
                                                                     <div onClick={() => deleteStaff(data._id)} className="text-danger"><IoTrashSharp /></div>
-                                                                    <div onClick={() => { setModal(true); setUpdateModal(true); findUser(data._id) }} className="text-light" ><IoCreate /></div>
+                                                                    {/* <div onClick={() => { setModal(true); setUpdateModal(true); findUser(data._id) }} className="text-light" ><IoCreate /></div> */}
                                                                 </div>
                                                             </div>
-                                                            <div className={!grid ? "item_details" : "items_grid_details"} style={{ textAlign: "center" }}>
-                                                                <div className="item_title">{data.user_name}</div>
-                                                                <b>{data.phone}</b>
+                                                            <div className={!grid ? "item_details" : "items_grid_details"} style={{ textAlign: "center", fontFamily: "montserrat" }}>
+                                                                <div className="item_title">{data.email}</div>
+                                                                <b>{data.verified_at}</b>
                                                             </div>
                                                         </div>
                                                     )

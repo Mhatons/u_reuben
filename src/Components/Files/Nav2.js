@@ -57,9 +57,10 @@ function Nav2() {
                                 {
                                     reverseCategories.map((data, i) => {
                                         return (
-                                            <li> 
+                                            <li key={i}> 
                                                 <Link className="categoty_li dropdown-item">
-                                            <span className="ps-2 pe-5">{data.name}</span></Link> </li>
+                                                <span className="ps-2 pe-5">{data.name}</span></Link> 
+                                            </li>
                                         )
                                     })
                                 }

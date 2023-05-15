@@ -12,7 +12,7 @@ import Button from "../Button"
 import Input from "../input/Input"
 function Reg() {
 
-    const { darkbg, setDarkbg, updateModal, url, err, setErr, dateToday, setOtpCode, setBtnSpinner, spin, showModal, setShowModal, btnSpinner, error } = useContext(myContext)
+    const { darkbg, setDarkbg, updateModal, url, err, setErr, dateToday, setOtpCode, setBtnSpinner, spin, showModal, setShowModal, btnSpinner, error, spinner, awaitLogin } = useContext(myContext)
 
 
     const [user, setUser] = useState({ email: "", confirmPassword: "", password: ""})
@@ -20,11 +20,6 @@ function Reg() {
 
     const [unmatch, setUnmatch] = useState(false)
 
-
-//     const handleChange = (event) => {
-//     setPassword(event.target.value);
-//     setPasswordsMatch(event.target.value === confirmPassword);
-//   };
 
 
     const createUser = () => {
@@ -98,7 +93,15 @@ function Reg() {
             <Nav2 />
             <Nav />
             <div className="modal_bg2">
-
+            {
+                awaitLogin && 
+                    <div 
+                        id="awaitlogin">
+                        <img src={spinner} 
+                        alt="spinner" 
+                        className="spinner" />
+                    </div>
+            }
                 <div className="modal_bg">
                     <div className={`${darkbg ? "my_modal_dark": null} h-75 mt-5 modal_dark_txt my_modal`}>
                         <div className="my_modal_details">
@@ -127,7 +130,8 @@ function Reg() {
                                     </div> */}
                                     <div>
                                         <div>Password</div>
-                                        <input type="password" 
+                                        <input type="password"
+                                        maxLength={8}
                                         minLength={6} 
                                         placeholder="Password" 
                                         className={err && user.password === "" ? "err" : null} 
@@ -137,7 +141,8 @@ function Reg() {
 
                                     <div>
                                         <div>Confirm Password</div>
-                                        <input type="password" 
+                                        <input type="password"
+                                        maxLength={8}
                                         minLength={6} 
                                         placeholder="comfirm password" 
                                         className={err && user.confirmPassword === "" ? "err" : null} 
