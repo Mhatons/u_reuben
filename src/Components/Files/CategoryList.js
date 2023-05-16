@@ -1,8 +1,6 @@
 import { useContext } from "react"
-import { IoList } from "react-icons/io5"
 import { SiCakephp } from "react-icons/si"
 import { CiBurger, CiFries, CiBeerMugFull, CiIceCream, CiPizza, CiCoffeeBean, CiForkAndKnife, CiHotdog, CiCoffeeCup } from "react-icons/ci"
-import { Link } from "react-router-dom"
 import { myContext } from "../../myContext"
 
 // TfiLayoutAccordionSeparated /tfi (for single view)

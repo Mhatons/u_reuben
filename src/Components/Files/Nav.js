@@ -51,13 +51,6 @@ function Nav() {
                 </section>
 
 
-                {/* {
-                    toAdmin &&
-                    <div className="order_btn collapse navbar-collapse" id="navbarSupportedContent">
-                        <Link to="/admin" ><button className="btn btn-danger">Data Page</button></Link>
-                    </div>
-                } */}
-
                 {
                     login && <div className="cart_in_nav">
                         <Link to="/cart" className="cart"><IoCartOutline />
@@ -73,8 +66,8 @@ function Nav() {
                         </div>
                     </div>
 
-                    <div class={!darkbg ? "offcanvas offcanvas-start" : "offcanvas offcanvas-start darkMode"} tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                        <div class="offcanvas-header">
+                    <div className={!darkbg ? "offcanvas offcanvas-start" : "offcanvas offcanvas-start darkMode"} tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                        <div className="offcanvas-header">
                             {
                                 login && <div className="nav-item dropdown">
                                     <a className="nav-link text-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -91,9 +84,9 @@ function Nav() {
                                     <Link to="/signin" className={!darkbg ? "nav2_links" : "nav2_links nav2_links_light text-light"}>Sign in</Link>
                                 </div>
                             }
-                            <button type="button" style={{ backgroundColor: "white" }} class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            <button type="button" style={{ backgroundColor: "white" }} className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
-                        <div class="offcanvas-body">
+                        <div className="offcanvas-body">
 
                             <section className="nav2_center">
                                 <div className="nav_search_sm">
@@ -118,14 +111,14 @@ function Nav() {
 
                                 Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
                             </div>
-                            <div class="dropdown mt-3">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <div className="dropdown mt-3">
+                                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                                     Dropdown button
                                 </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <ul className="dropdown-menu">
+                                    <li><a className="dropdown-item" href="#">Action</a></li>
+                                    <li><a className="dropdown-item" href="#">Another action</a></li>
+                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </div>
                         </div>
