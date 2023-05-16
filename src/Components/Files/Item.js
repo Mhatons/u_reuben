@@ -53,10 +53,6 @@ function Item() {
         return fee
     }
 
-    function handleReload() {
-        // window.location.reload()
-    }
-
 
     function getID(e) {
         fetch(`${url}/products/${e}`)
@@ -222,26 +218,12 @@ function Item() {
             price: 2100
         },
         {
-            id: 4,
+            id: 5,
             image1: chi,
             image2: chi2,
             name: "Chips",
             price: 2100
-        },
-        // {
-        //     id: 4,
-        //     image1: bug,
-        //     image2: bug2,
-        //     name: "Burger",
-        //     price: 2100
-        // },
-        // {
-        //     id: 4,
-        //     image1: chik,
-        //     image2: chik2,
-        //     name: "Chicken",
-        //     price: 2100
-        // },
+        }
     ]
 
 
@@ -263,7 +245,7 @@ function Item() {
                                 {
                                     gallery.map((data, i) => {
                                         return (
-                                            <Link className="product_xImgs_img" onClick={() => getID(data._id)}>
+                                            <Link key={i} className="product_xImgs_img" onClick={() => getID(data._id)}>
                                                 <img src={`${url}/uploads/${data.image}`} key={i} alt="" />
                                             </Link>
                                         )
@@ -314,7 +296,7 @@ function Item() {
                         <div className="product_delivery">
                             <div className={err && delivery === "" ? "err_delivery" : null}>Delivery Method</div>
                             <div onChange={(e) => getDelivery(e)}>
-                                <div onClick={() => setHomeDelivery(false)} className="delivery_type"><input type="radio" id="office" name="delivery" value="office" /> <label for="office" >Office Pickup</label></div>
+                                <div onClick={() => setHomeDelivery(false)} className="delivery_type"><input type="radio" id="office" name="delivery" value="office" /> <label htmlFor="office" >Office Pickup</label></div>
                                 {
                                     !homeDelivery && <div>
                                         <span>
@@ -325,7 +307,7 @@ function Item() {
                                         </div>
                                     </div>
                                 }
-                                <div onClick={() => setHomeDelivery(true)} className="delivery_type"><input type="radio" id="home" name="delivery" value="home" /> <label for="home">Home Delivery</label></div>
+                                <div onClick={() => setHomeDelivery(true)} className="delivery_type"><input type="radio" id="home" name="delivery" value="home" /> <label htmlFor="home">Home Delivery</label></div>
                                 {
                                     homeDelivery && <div>
                                         <span>
@@ -357,15 +339,15 @@ function Item() {
 
 
                         {/* <!-- Modal --> */}
-                        <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
+                        <div className="modal modal-lg fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                    <div className="modal-header">
                                         <div> <span className="text-success fs-4"><IoCheckmarkCircleSharp /></span> <span className="text-dark">A new item has beeen added to your shopping cart, you now have <span style={{ color: "#ff4000", fontWeight: "700", fontSize: "17px" }}>{cart}</span> pending order(s)</span> </div>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-footer">
-                                        <Link to={"/cart"} ><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Continue Cart Page</button></Link>
+                                    <div className="modal-footer">
+                                        <Link to={"/cart"} ><button type="button" className="btn btn-primary" data-bs-dismiss="modal">Continue Cart Page</button></Link>
                                     </div>
                                 </div>
                             </div>
@@ -380,11 +362,11 @@ function Item() {
                             <div>Special Order</div>
                             <span>
                                 Orders for special events that demands the production of goods in large quantity should be directed to the admin
-                                <p>
+                                <div>
                                     <div>Admin contacts;</div>
                                     <div>phone no. 091794240977</div>
                                     <div>email: admin@gmail.com</div>
-                                </p>
+                                </div>
                             </span>
                         </div>
                         <div className="product_delivery">

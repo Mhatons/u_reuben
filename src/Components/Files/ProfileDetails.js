@@ -14,6 +14,7 @@ function ProfileDetails() {
     const { userInfo, orders, darkbg, url, logo, dateToday, awaitLogin, spinner, setAwaitLogin, setOrders } = useContext(myContext)
     const [edit, setEdit] = useState(false)
     const [showImage, setShowImage] = useState(false)
+    const [allOrders, setAllOrders] = useState()
 
     const [pendingOrder, setPendingOrders] = useState()
 
@@ -32,6 +33,19 @@ function ProfileDetails() {
                 setDetails(response.data)
             })
 
+        Axios.get(`${url}/sales/user/${id}`)
+        .then(response => {
+                setAllOrders(response.data.length)
+            })
+
+        //  fetch(`${url}/sales/user/${id}`)
+        //     .then((resp) => resp.json())
+        //     .then((data) => {
+        //         if (data) {
+        //             setAllOrders(data)
+        //         }
+        //     })
+
             fetch(`${url}/orders/mine/${id}`)
             .then((resp) => resp.json())
             .then((data) => {
@@ -47,6 +61,7 @@ function ProfileDetails() {
         //     })
 
     }, [details])
+
 
 
     const [phone, setPhone] = useState("")
@@ -184,6 +199,10 @@ function ProfileDetails() {
             })
     }
 
+    function scrollBottom(){
+        window.scrollTo(0,400)
+    }
+
 
 
     return (
@@ -214,13 +233,19 @@ function ProfileDetails() {
                     </Link>
                     <section className="profile_intro p-4">
                         <b className="fs-4">Hello {details.user_name}</b>
-                        <p>You can manage your account and details here</p>
+                        <p>You can manage your account details here</p>
                         <div className="profile_edit_btn pt-3">
                             <button 
-                            onClick={() => setEdit(true)}
+                            onClick={() => {scrollBottom(); edit == true? setEdit(false): setEdit(true)}}
                             type="button" 
                             style={{fontSize: "13px"}} 
-                            className=" btn btn-warning text-light fw-bold">Edit profile
+                            className={`btn ${!edit? "btn-warning": "btn-danger"} text-light fw-bold`}>
+                               {
+                                !edit && " Edit profile"
+                               }
+                               {
+                                edit && " Abort Edit"
+                               }
                             </button>
                         </div>
                     </section>
@@ -336,7 +361,7 @@ function ProfileDetails() {
                                         <p>Pending orders</p>
                                     </div>
                                     <div>
-                                        <b>12</b>
+                                        <b>{allOrders}</b>
                                         <p>Total orders</p>
                                     </div>
                                 </div>
