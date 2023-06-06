@@ -2,27 +2,32 @@ import { useContext, useState } from "react"
 import { myContext } from "../../myContext"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useEffect } from "react"
-import {IoPersonOutline} from "react-icons/io5"
+import {IoPersonOutline, IoTrashSharp} from "react-icons/io5"
 
 import { Image } from "cloudinary-react"
 
 import Axios from 'axios'
 import { useRef } from "react"
+import { isDisabled } from "@testing-library/user-event/dist/utils"
 
 
 function ProfileDetails() {
-    const { userInfo, orders, darkbg, url, logo, dateToday, awaitLogin, spinner, setAwaitLogin, setOrders } = useContext(myContext)
+    const { userInfo, orders, darkbg, url, logo, dateToday, awaitLogin, spinner, setAwaitLogin, setOrders, deleteProduct } = useContext(myContext)
     const [edit, setEdit] = useState(false)
     const [showImage, setShowImage] = useState(false)
     const [allOrders, setAllOrders] = useState()
 
-    const [pendingOrder, setPendingOrders] = useState()
+    const [myOrders, setMyOrders] = useState(true)
+    const [myDetails, setMyDetails] = useState(true)
+
+    const [pendingOrder, setPendingOrders] = useState([])
 
 
     let [details, setDetails] = useState({})
     const [uploadedImage, setUploadedImage] = useState()
 
     const navigate = useNavigate()
+    // console.log(products)
 
     const { id } = useParams()
     // const userdata = useRef()
@@ -36,31 +41,24 @@ function ProfileDetails() {
         Axios.get(`${url}/sales/user/${id}`)
         .then(response => {
                 setAllOrders(response.data.length)
+                // console.log(response.data)
             })
+            .catch(error => console.log(error))
 
-        //  fetch(`${url}/sales/user/${id}`)
-        //     .then((resp) => resp.json())
-        //     .then((data) => {
-        //         if (data) {
-        //             setAllOrders(data)
-        //         }
-        //     })
 
             fetch(`${url}/orders/mine/${id}`)
-            .then((resp) => resp.json())
-            .then((data) => {
-                if (data) {
-                    setPendingOrders(data.length)
-                }
+            .then(resp => resp.json())
+            .then(data => {
+                setPendingOrders(data)
+                // console.log(data)
             })
-        // fetch(`${url}/users/${id}`)
-        //     .then(resp => resp.json())
-        //     .then((data) => {
-        //         setDetails(data)
-        //         userdata.current = data
-        //     })
 
-    }, [details])
+    }, [details])   
+    
+    var products = [...pendingOrder].reverse()
+
+
+
 
 
 
@@ -203,6 +201,11 @@ function ProfileDetails() {
         window.scrollTo(0,400)
     }
 
+    function handleToggleState(){
+        setMyDetails(!myDetails)
+        setMyOrders(!myOrders)
+    }
+
 
 
     return (
@@ -236,10 +239,10 @@ function ProfileDetails() {
                         <p>You can manage your account details here</p>
                         <div className="profile_edit_btn pt-3">
                             <button 
-                            onClick={() => {scrollBottom(); edit == true? setEdit(false): setEdit(true)}}
-                            type="button" 
+                            onClick={() => {scrollBottom(); setEdit(!edit)}}
+                            type="button"
                             style={{fontSize: "13px"}} 
-                            className={`btn ${!edit? "btn-warning": "btn-danger"} text-light fw-bold`}>
+                            className={`btn ${!edit? "btn-warning": "btn-danger"} text-light fw-bold ${!myDetails? "disabled": null}`}>
                                {
                                 !edit && " Edit profile"
                                }
@@ -256,7 +259,8 @@ function ProfileDetails() {
                                 <p style={{fontSize: "15px"}}>My account</p>
                                 <button style={{fontSize: "12px", color: "white"}} className="btn btn-info fw-bold">Settings</button>
                             </header>
-                            <div className="profile_details">
+                            {
+                                myDetails && <div className="profile_details">
                                 {
                                     !edit && <header>User information</header>
                                 }
@@ -309,6 +313,40 @@ function ProfileDetails() {
 
                                 </div>
                             </div>
+                            }
+
+                            {
+                                !myOrders && <div className="cart_items">
+                                    <header className="pb-2">Items in Cart ({pendingOrder?.length})</header>
+                                        {
+                                            products?.length ? (
+                                                products.map((data, i) => {
+                                                    return (
+                                                        <div 
+                                                        className={!darkbg ? "cart_item" : "cart_item darkNav"} key={i} >
+                                                            <div className="cart_item_img">
+                                                                <img src={`${url}/uploads/${data.image}`} alt="" />
+                                                            </div>
+                                                            <div className={!darkbg ? "cart_item_txt" : "cart_item_txt no_border"}>
+                                                                <div className="cart_item_title">{data.title}</div>
+                                                                <div onClick={() => deleteProduct(data._id)} className="removeCartItem"> <IoTrashSharp /> </div>
+                                                                <h4>NGN{data.amount}</h4>
+                                                                <div className="product_quantity_add">
+                                                                    <span>-</span>
+                                                                    <div>{data.quantity}</div>
+                                                                    <span>+</span>
+                                                                    <div className="product_discount">order from five pieces above and get one chicken shawarma free</div>
+                                                                </div>
+                                                                <div className="txt_sm" style={{ paddingTop: "1.5em" }}>{data.description}</div>
+                                                            </div>
+
+                                                        </div>
+                                                    )
+                                                })
+                                            ) : null
+                                        }
+                                    </div>
+                            }
                         </div>
 
                         <div className=" details_stopper position-relative col-sm-12 col-md-4 col-lg-3">
@@ -356,12 +394,20 @@ function ProfileDetails() {
                                 </div>
                                 <div 
                                     className="profile_logs text-center">
-                                    <div>
-                                        <b>{pendingOrder}</b>
-                                        <p>Pending orders</p>
+                                    <div 
+                                    onClick={() => 
+                                        {scrollBottom(); handleToggleState()}}
+                                    className={` ${myOrders? "text-dark": "text-danger"} fw-bold`}  role="button" 
+                                    >
+                                    {
+                                        myOrders && " My Orders"
+                                    }
+                                    {
+                                        !myOrders && " My Details"
+                                    }
                                     </div>
                                     <div>
-                                        <b>{allOrders}</b>
+                                        {/* <b>{allOrders}</b> */}
                                         <p>Total orders</p>
                                     </div>
                                 </div>

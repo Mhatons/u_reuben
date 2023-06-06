@@ -1193,12 +1193,19 @@
 
 
 
+
+
+
+
 @media(max-width: 1343px){
   .acount_no_login{
     flex-direction: column;
   }
   .account_login_btn{
     width: 100% !important;
+  }
+  .removeCartItem{
+    visibility: visible;
   }
 }
 @media(max-width: 1042px){
@@ -1215,6 +1222,7 @@
     width: 60%;
   }
 }
+
 @media(max-width: 1101px){
   .cart_details{
     width: 90%;
@@ -1236,6 +1244,7 @@
   }
 
 }
+
 @media(max-width: 992px){
   .Nav2{
     display: none;
@@ -1269,7 +1278,6 @@
   }
 }
 
-
 @media(max-width: 850px){
   .item_fifth{
     display: none;
@@ -1294,8 +1302,6 @@
   }
   
 }
-
-
 
 @media(max-width: 800px){
   .homeProduct_sect{
@@ -1562,7 +1568,6 @@
   }
   
 }
-
 
 @media(max-width: 350px){
 
