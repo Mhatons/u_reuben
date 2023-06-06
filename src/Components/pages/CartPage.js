@@ -114,7 +114,9 @@ function CartPage() {
                 <section className={!darkbg ? "cart_page" : "cart_page pb-3 darkMode"}>
                     <section className={!darkbg ? "cart_header" : "cart_header darkMode"}>
                         <div>UncleReuben Grills</div>
-                        <div id="my_scroll_container" style={{ backgroundColor: "transparent" }}>
+                        <div 
+                        id="my_scroll_container" 
+                        style={{ backgroundColor: "transparent" }}>
                             <div id="my_scroll_img">
                                 <img src={wave} alt="wave" />
                                 <img src={wave} alt="wave" />
@@ -125,21 +127,46 @@ function CartPage() {
                         products.length > 0 ? (
                             <section className="cart_details">
                                 <div className="cart_details_one">
-                                    <div className={!darkbg ? "address" : "address darkNav"}>
+                                    <div 
+                                    className={!darkbg ? "address" : "address darkNav"}>
                                         <h6>Delivery Address</h6>
                                         <div>
-                                            <div> {userInfo.user_name} <span> {userInfo.phone} </span></div>
-                                            <div> {userInfo.address} </div>
+                                            <div> 
+                                                {userInfo.user_name} 
+                                                <span> 
+                                                    {userInfo.phone} 
+                                                    </span>
+                                                    </div>
+                                            <div> 
+                                                {userInfo.address} 
+                                                </div>
                                             <div>Nigeria</div>
                                         </div>
                                     </div>
 
-                                    <div className={!darkbg ? "payment" : "payment darkNav"}>
+                                    <div 
+                                    className={!darkbg ? "payment" : "payment darkNav"}>
                                         {/* <div className="payment_type"> */}
                                         <h6>Payment Method</h6>
-                                        <div onChange={(e) => getPayment(e)}>
-                                            <div className="delivery_type"><input type="radio" id="later" name="payment" value="pay_later" /> <label htmlFor="later" >Payment on Delivery</label></div>
-                                            <div className="delivery_type"><input type="radio" id="now" name="payment" value="pay_now" /> <label htmlFor="now">Pay Now</label></div>
+                                        <div 
+                                        onChange={(e) => 
+                                        getPayment(e)}>
+                                            <div 
+                                            className="delivery_type">
+                                                <input type="radio" id="later" name="payment" value="pay_later" /> 
+                                                <label htmlFor="later" >
+                                                    Payment on Delivery
+                                                    </label>
+                                                    </div>
+                                            <div 
+                                            className="delivery_type">
+                                                <input type="radio" 
+                                                id="now" name="payment" 
+                                                value="pay_now" /> 
+                                                <label htmlFor="now">
+                                                    Pay Now
+                                                    </label>
+                                                    </div>
                                         </div>
                                         {/* </div> */}
                                     </div>
@@ -149,7 +176,8 @@ function CartPage() {
                                             products.length ? (
                                                 products.map((data, i) => {
                                                     return (
-                                                        <div className={!darkbg ? "cart_item" : "cart_item darkNav"} key={i} >
+                                                        <div 
+                                                        className={!darkbg ? "cart_item" : "cart_item darkNav"} key={i} >
                                                             <div className="cart_item_img">
                                                                 <img src={`${url}/uploads/${data.image}`} alt="" />
                                                             </div>
